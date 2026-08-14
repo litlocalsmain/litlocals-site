@@ -1,9 +1,10 @@
 {
   "id": "cleaning",
   "label": "Cleaning",
+  "accent": "#8a7350",
   "eyebrow": "Local cleaning",
-  "headline_template": "{name} leaves the place ready for company.",
-  "lede_template": "Cleaning in {city}. Houses and small shops. Tap to call.",
+  "headline_template": "Leaves the place ready for company.",
+  "lede_template": "Houses and small shops in {city}.",
   "services": [
     "House cleaning",
     "Move-out cleans",

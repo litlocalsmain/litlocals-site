@@ -1,9 +1,10 @@
 {
   "id": "plumbing",
   "label": "Plumbing",
+  "accent": "#9a6f2a",
   "eyebrow": "Local plumbing",
-  "headline_template": "{name} shows up when the pipe doesn’t.",
-  "lede_template": "A plumbing shop in {city}. Phone on the page. Hours on the page. Tap to call.",
+  "headline_template": "Shows up when the pipe doesn’t.",
+  "lede_template": "Burst pipes, water heaters, and drain work in {city}.",
   "services": [
     "Burst pipes and leaks",
     "Clogged drains",

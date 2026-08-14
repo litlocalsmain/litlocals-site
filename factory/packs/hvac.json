@@ -1,9 +1,10 @@
 {
   "id": "hvac",
   "label": "HVAC",
+  "accent": "#8a6230",
   "eyebrow": "Local heating and cooling",
-  "headline_template": "{name} keeps the house from cooking.",
-  "lede_template": "Heating and cooling in {city}. The phone is on this page. Hours too. Tap to call.",
+  "headline_template": "Keeps the house from cooking.",
+  "lede_template": "AC, heat, and tune-ups in {city}.",
   "services": [
     "AC repair",
     "Furnace and heat",

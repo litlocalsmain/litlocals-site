@@ -1,9 +1,10 @@
 {
   "id": "electrical",
   "label": "Electrical",
+  "accent": "#b8923e",
   "eyebrow": "Local electrical",
-  "headline_template": "{name} shows up when the lights don’t.",
-  "lede_template": "Electrical work in {city}. Panels, outlets, and the stuff that sparks. Tap to call.",
+  "headline_template": "Shows up when the lights don’t.",
+  "lede_template": "Panels, outlets, and the stuff that sparks in {city}.",
   "services": [
     "Outlets and switches",
     "Panel work",

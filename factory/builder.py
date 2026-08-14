@@ -7,7 +7,7 @@ No CMS. No customer accounts. No email. No deploy.
 Usage:
     python3 builder.py examples/hector-plumbing.json
 
-Writes out/{slug}/index.html, styles.css, assets/hero.*, assets/mark.svg
+Writes out/{slug}/index.html, styles.css, motion.js, assets/hero.*, assets/mark.svg
 
 The 48-hour $1,500 clock is NOT started here. The preview bar uses a
 placeholder. Henry starts the clock when he sends.
@@ -37,6 +37,48 @@ EXPIRY_PLACEHOLDER = "48 hours after we send this"
 STARTER_CAPTION = "Starter photo — not their crew."
 MAX_REVIEWS = 3
 DOWNLOAD_TIMEOUT = 30
+
+
+# ---------------------------------------------------------------------------
+# Service icons — one 24x24 stroke SVG per trade, currentColor. Same icon
+# for all six services of that trade.
+# ---------------------------------------------------------------------------
+
+
+def _icon(inner: str) -> str:
+    return (
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+        'stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">'
+        f"{inner}</svg>"
+    )
+
+
+TRADE_ICONS: dict[str, str] = {
+    "plumbing": _icon(
+        '<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>'
+    ),
+    "hvac": _icon(
+        '<circle cx="12" cy="12" r="2.2"/>'
+        '<path d="M12 3c2.4 2 2.6 5.2.4 6.4C10 8.2 9.6 5 12 3z'
+        'M21 12c-2 2.4-5.2 2.6-6.4.4C15.8 10 19 9.6 21 12z'
+        'M12 21c-2.4-2-2.6-5.2-.4-6.4C14 15.8 14.4 19 12 21z'
+        'M3 12c2-2.4 5.2-2.6 6.4-.4C8.2 14 5 14.4 3 12z"/>'
+    ),
+    "roofing": _icon(
+        '<path d="M3 12 12 4l9 8"/><path d="M5 10.5V20h14v-9.5"/>'
+    ),
+    "landscaping": _icon(
+        '<path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>'
+        '<path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>'
+    ),
+    "cleaning": _icon(
+        '<path d="M12 2l1.5 6.5L20 10l-6.5 1.5L12 18l-1.5-6.5L4 10l6.5-1.5L12 2z"/>'
+    ),
+    "electrical": _icon(
+        '<path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/>'
+    ),
+}
+
 
 # ---------------------------------------------------------------------------
 # IO
@@ -72,6 +114,17 @@ def load_pack(vertical: str) -> dict:
 
 def fill_words(template: str, prospect: dict) -> str:
     return (template or "").replace("{name}", prospect["name"]).replace("{city}", prospect["city"])
+
+
+def trade_headline(pack: dict, prospect: dict) -> str:
+    """Trade line only. h1 is already the shop name — do not repeat it."""
+    raw = fill_words(pack.get("headline_template") or "", prospect).strip()
+    name = (prospect.get("name") or "").strip()
+    if name and raw.lower().startswith(name.lower()):
+        raw = raw[len(name):].lstrip(" \t,.—–-")
+        if raw:
+            raw = raw[0].upper() + raw[1:]
+    return raw
 
 
 def is_http_url(value: object) -> bool:
@@ -144,7 +197,7 @@ def copy_local_hero(vertical: str, dest_dir: Path) -> Path | None:
         if src.exists():
             dest = dest_dir / f"hero{src.suffix.lower().replace('.jpeg', '.jpg')}"
             shutil.copy2(src, dest)
-            print(f"builder: copied local AI fallback {src.name}")
+            print(f"builder: copied local job-site hero {src.name}")
             return dest
     return None
 
@@ -194,7 +247,7 @@ def hero_block(hero: dict | None) -> str:
         alt = escape(STARTER_CAPTION, quote=True)
         caption = f'      <p class="hero-caption">{escape(STARTER_CAPTION)}</p>\n'
     return (
-        f'<figure class="hero-photo">\n'
+        f'      <figure class="hero-photo">\n'
         f'        <img src="{src}" alt="{alt}" width="1600" height="900">\n'
         f"{caption}"
         f"      </figure>\n"
@@ -248,7 +301,7 @@ def reviews_block(prospect: dict) -> str:
         return ""
     inner = "\n".join(items)
     return (
-        '    <section class="section section-alt" id="reviews" aria-labelledby="reviews-title">\n'
+        '    <section class="section section-alt reveal" id="reviews" aria-labelledby="reviews-title">\n'
         '      <div class="wrap">\n'
         '        <h2 id="reviews-title">What people wrote</h2>\n'
         f'        <ul class="quotes">\n{inner}\n        </ul>\n'
@@ -273,7 +326,7 @@ def listings_block(prospect: dict) -> str:
         return ""
     inner = "\n".join(links)
     return (
-        '    <section class="section" id="listings" aria-labelledby="listings-title">\n'
+        '    <section class="section reveal" id="listings" aria-labelledby="listings-title">\n'
         '      <div class="wrap">\n'
         '        <h2 id="listings-title">Find them</h2>\n'
         f'        <ul class="listings">\n{inner}\n        </ul>\n'
@@ -283,11 +336,17 @@ def listings_block(prospect: dict) -> str:
 
 
 def services_items(pack: dict) -> str:
+    icon = TRADE_ICONS.get(pack.get("id") or "", "")
     items = []
     for svc in pack.get("services") or []:
-        if not str(svc).strip():
+        label = str(svc).strip()
+        if not label:
             continue
-        items.append(f"          <li>{escape(str(svc).strip())}</li>")
+        items.append(
+            f'          <li class="svc">'
+            f'<span class="svc-icon" aria-hidden="true">{icon}</span>'
+            f"<span>{escape(label)}</span></li>"
+        )
     return "\n".join(items)
 
 
@@ -352,6 +411,7 @@ def build(prospect_path: Path) -> Path:
     hero = resolve_hero(prospect, pack, assets)
     copy_mark(assets)
     shutil.copy2(LAYOUT / "styles.css", dest / "styles.css")
+    shutil.copy2(LAYOUT / "motion.js", dest / "motion.js")
 
     buy = (prospect.get("stripe_url") or "").strip()
     buy_href = buy if is_http_url(buy) else "#buy"
@@ -362,8 +422,9 @@ def build(prospect_path: Path) -> Path:
         "city": escape(prospect["city"]),
         "phone": escape(phone),
         "phone_tel": escape(tel_href(phone), quote=True),
+        "trade": escape(pack["id"]),
         "eyebrow": escape(pack.get("eyebrow") or pack.get("label") or ""),
-        "headline": escape(fill_words(pack.get("headline_template") or "", prospect)),
+        "headline": escape(trade_headline(pack, prospect)),
         "lede": escape(fill_words(pack.get("lede_template") or "", prospect)),
         "buy_href": escape(buy_href, quote=True),
         "hero_block": hero_block(hero),
@@ -376,6 +437,7 @@ def build(prospect_path: Path) -> Path:
 
     template = (LAYOUT / "template.html").read_text(encoding="utf-8")
     html = apply_template(template, mapping)
+    html = re.sub(r"\n{3,}", "\n\n", html)
     index = dest / "index.html"
     index.write_text(html, encoding="utf-8")
     print(f"builder: wrote {index}")

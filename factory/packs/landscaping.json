@@ -1,9 +1,10 @@
 {
   "id": "landscaping",
   "label": "Landscaping",
+  "accent": "#6e6a2a",
   "eyebrow": "Local yard work",
-  "headline_template": "{name} keeps the yard looking like someone lives here.",
-  "lede_template": "Yard work in {city}. Mowing, cleanup, and the jobs that pile up. Tap to call.",
+  "headline_template": "Keeps the yard looking like someone lives here.",
+  "lede_template": "Mowing, cleanup, and the jobs that pile up in {city}.",
   "services": [
     "Mowing and edging",
     "Cleanup",

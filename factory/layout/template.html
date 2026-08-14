@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-trade="{{trade}}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,6 +17,7 @@
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
+  <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 
   <div class="preview-bar" role="status">
     Draft for {{name}}. $1,500 if you buy by 48 hours after we send this. Then $2,500.
@@ -30,7 +31,7 @@
       </a>
       <nav class="nav" aria-label="On this page">
         <a href="#hours">Hours</a>
-        <a href="#services">What’s included</a>
+        <a href="#services">Services</a>
         <a href="#call">Call</a>
       </nav>
       <a class="btn btn-gold header-cta" href="{{phone_tel}}">Call {{phone}}</a>
@@ -38,7 +39,7 @@
   </header>
 
   <main id="main">
-    <section class="hero" id="top" aria-labelledby="shop-name">
+    <section class="hero reveal" id="top" aria-labelledby="shop-name">
       {{hero_block}}
       <div class="wrap hero-inner">
         <p class="eyebrow">{{eyebrow}}</p>
@@ -52,7 +53,7 @@
       </div>
     </section>
 
-    <section class="section" id="hours" aria-labelledby="facts-title">
+    <section class="section reveal" id="hours" aria-labelledby="facts-title">
       <div class="wrap">
         <h2 id="facts-title">Hours, area, city</h2>
         <dl class="facts">
@@ -64,10 +65,10 @@
 
     {{reviews_block}}
 
-    <section class="section section-alt" id="services" aria-labelledby="offer-title">
+    <section class="section section-alt reveal" id="services" aria-labelledby="services-title">
       <div class="wrap">
-        <h2 id="offer-title">What’s included</h2>
-        <ul class="include-list">
+        <h2 id="services-title">Services</h2>
+        <ul class="svc-list">
           {{services_items}}
         </ul>
       </div>
@@ -75,7 +76,7 @@
 
     {{listings_block}}
 
-    <section class="section contact" id="buy" aria-labelledby="buy-title">
+    <section class="section contact reveal" id="buy" aria-labelledby="buy-title">
       <div class="wrap">
         <h2 id="buy-title">Buy this site</h2>
         <p class="contact-copy">$1,500 if you buy within 48 hours. Then $2,500.</p>
@@ -84,7 +85,7 @@
     </section>
   </main>
 
-  <footer class="site-footer">
+  <footer class="site-footer reveal">
     <div class="wrap">
       <p>Draft by Lit Locals. Not their live site yet.</p>
       {{unsplash_credit}}
@@ -95,5 +96,7 @@
   <div class="call-dock">
     <a class="btn btn-gold btn-lg" href="{{phone_tel}}">Call {{phone}}</a>
   </div>
+
+  <script src="motion.js" defer></script>
 </body>
 </html>

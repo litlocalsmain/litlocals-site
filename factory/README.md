@@ -1,4 +1,4 @@
-# Lit Locals preview factory (v1)
+# Lit Locals preview factory (v1.1)
 
 A small factory that turns a prospect JSON into a static preview site.
 
@@ -7,11 +7,13 @@ One layout engine. Six trade packs. Photo fallback. One Python builder.
 Magical but dumb. No CMS. No customer accounts. No email. No deploy.
 Company: Lit Locals only. Not AISMB Agency. Not a ChatGPT install.
 
+v1.1 adds scroll reveal, service cards with trade icons, pack gold-family accents, and a desktop split hero. Price and Henry-sends rules are unchanged.
+
 ## How to run
 
 From this folder, run builder.py with a prospect JSON (see examples/).
 
-Writes out/SLUG/: index.html, styles.css, assets/hero image, assets/mark.svg
+Writes out/SLUG/: index.html, styles.css, motion.js, assets/hero image, assets/mark.svg
 
 Open the generated index.html in a browser. Local preview only.
 
@@ -48,13 +50,14 @@ Frozen LA hunt cards were too thin for a second example (no review quotes, hours
 
 ## Layout
 
-layout/template.html plus layout/styles.css
+layout/template.html plus layout/styles.css plus layout/motion.js
 Cream page #f7f3ea, dark type, gold buttons, Source Serif + Source Sans, phone-first.
+Cousins, not twins: each pack shifts gold a little. Desktop 720px+ splits the hero and the service cards.
 
 ## Packs
 
 Six packs: hvac, plumbing, roofing, landscaping, cleaning, electrical.
-Each has a local-shop headline, lede with city, services, and a real Unsplash image plus photographer credit. No fake reviews in packs.
+Each has a local-shop headline (trade line only — the h1 is the name), a lede with city, six services, a gold-family accent, and a real Unsplash image plus photographer credit. No fake reviews in packs.
 
 ## Do not
 
@@ -64,4 +67,3 @@ Each has a local-shop headline, lede with city, services, and a real Unsplash im
 - Do not contact prospects.
 - Do not send email.
 - Do not start the 48-hour clock from this script.
-

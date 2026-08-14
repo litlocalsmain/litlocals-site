@@ -1,9 +1,10 @@
 {
   "id": "roofing",
   "label": "Roofing",
+  "accent": "#7a4e28",
   "eyebrow": "Local roofing",
-  "headline_template": "{name} gets on the roof before the next rain.",
-  "lede_template": "Roof work in {city}. Leaks, shingles, and a look before the weather turns. Tap to call.",
+  "headline_template": "On the roof before the next rain.",
+  "lede_template": "Leaks, shingles, and a look before the weather turns in {city}.",
   "services": [
     "Leak repair",
     "Shingle replacement",
