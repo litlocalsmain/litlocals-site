@@ -8,22 +8,65 @@
   ],
   "headers": [
     {
+      "source": "/ing-plumbing",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/ing-plumbing/",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
       "source": "/p/(.*)",
       "headers": [
-        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
       ]
     },
     {
       "source": "/api/(.*)",
       "headers": [
-        { "key": "X-Robots-Tag", "value": "noindex, nofollow" },
-        { "key": "Cache-Control", "value": "no-store" }
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        }
       ]
     }
   ],
   "functions": {
-    "api/buy.js": { "includeFiles": "drafts/**" },
-    "api/draft.js": { "includeFiles": "drafts/**" },
-    "api/stripe/webhook.js": { "includeFiles": "drafts/**" }
-  }
+    "api/buy.js": {
+      "includeFiles": "drafts/**"
+    },
+    "api/draft.js": {
+      "includeFiles": "drafts/**"
+    },
+    "api/stripe/webhook.js": {
+      "includeFiles": "drafts/**"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/ing-plumbing",
+      "destination": "/p/k7m2x9ingp/"
+    },
+    {
+      "source": "/ing-plumbing/",
+      "destination": "/p/k7m2x9ingp/"
+    }
+  ]
 }

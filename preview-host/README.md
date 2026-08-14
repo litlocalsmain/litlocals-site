@@ -2,6 +2,8 @@
 
 Sales URLs for shop drafts. Not the public site.
 
+Pretty paths such as /ing-plumbing are served on preview.litlocals.com (rewrites to /p/{token}/).
+
 Drafts are static HTML at /p/{token}/. Buy now hits /api/buy?t={token} and opens a Checkout Session in test mode.
 
 The 48-hour clock starts from sent_at in drafts/{token}.json. The factory does not set this. Henry stamps sent_at when he sends. If sent_at is null, Buy refuses with error not_sent.
