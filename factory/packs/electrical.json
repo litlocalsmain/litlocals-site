@@ -6,17 +6,73 @@
   "headline_template": "Shows up when the lights don’t.",
   "lede_template": "Panels, outlets, and the stuff that sparks in {city}.",
   "services": [
-    "Outlets and switches",
-    "Panel work",
-    "Lighting",
-    "Ceiling fans",
-    "Troubleshooting",
-    "Adds and rewires"
+    {
+      "name": "Outlets and switches",
+      "what": "Dead outlets, a switch that doesn’t do anything, or a plug that’s loose and warm.",
+      "benefit": "The room works again, and you stop using a power strip as a permanent fix."
+    },
+    {
+      "name": "Panel work",
+      "what": "A full panel, a breaker that won’t hold, or a box that’s out of space.",
+      "benefit": "The heart of the house can take the load without tripping all afternoon."
+    },
+    {
+      "name": "Lighting",
+      "what": "A room that’s too dark, a fixture that’s dead, or cans that need to go in.",
+      "benefit": "You can see the workbench, the kitchen, or the front step at night."
+    },
+    {
+      "name": "Ceiling fans",
+      "what": "A fan that wobbles, a switch that only does one speed, or a new fan where a light is now.",
+      "benefit": "Air moving in the room that actually needs it."
+    },
+    {
+      "name": "Troubleshooting",
+      "what": "Something electrical is wrong and you don’t know which box or wire.",
+      "benefit": "A diagnosis before you replace the wrong part."
+    },
+    {
+      "name": "Adds and rewires",
+      "what": "A new circuit for a shop, EV, or kitchen, or old cloth wire that has to go.",
+      "benefit": "The house can take the new load without a fire-hazard workaround."
+    }
   ],
   "unsplash": {
     "id": "iOLHAIaxpDA",
     "image_url": "https://images.unsplash.com/photo-1601462904263-f2fa0c851cb9?auto=format&fit=crop&w=1600&q=80",
     "photographer": "Frames For Your Heart",
     "unsplash_page": "https://unsplash.com/photos/yellow-blue-and-black-coated-wires-iOLHAIaxpDA"
-  }
+  },
+  "process": [
+    {
+      "title": "You call the shop",
+      "body": "The number on this page rings them. Say if something sparked, a breaker keeps tripping, or you need a fan or outlet added."
+    },
+    {
+      "title": "They tell you if they can take it",
+      "body": "Ask if they cover your street and whether it’s a same-day look or a scheduled install."
+    },
+    {
+      "title": "They look, then they talk",
+      "body": "A tech should find the fault and tell you repair vs replace before they open walls or swap a panel."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "How do I know I need an electrician?",
+      "a": "Breakers that trip, outlets that die, lights that flicker, a burning smell, or a job that needs a new circuit. If you smell burning, get out and call."
+    },
+    {
+      "q": "What should I do while I wait?",
+      "a": "If something is sparking or hot, kill that breaker. Don’t keep resetting a breaker that trips twice."
+    },
+    {
+      "q": "Do they come to {city}?",
+      "a": "This shop is listed in {city}. Tap Call and ask if they cover your street."
+    },
+    {
+      "q": "How do I reach them?",
+      "a": "Call {phone}. That’s the shop number on this page."
+    }
+  ]
 }

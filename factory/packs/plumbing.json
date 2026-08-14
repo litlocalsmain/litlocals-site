@@ -6,17 +6,73 @@
   "headline_template": "Shows up when the pipe doesn’t.",
   "lede_template": "Burst pipes, water heaters, and drain work in {city}.",
   "services": [
-    "Burst pipes and leaks",
-    "Clogged drains",
-    "Water heaters",
-    "Faucets and fixtures",
-    "Sewer line trouble",
-    "Camera look at the line"
+    {
+      "name": "Burst pipes and leaks",
+      "what": "Water where it shouldn’t be — a split line, a dripping joint, or a leak you can hear in the wall.",
+      "benefit": "Stop the water before it ruins floors and the bill doubles."
+    },
+    {
+      "name": "Clogged drains",
+      "what": "Sinks, tubs, and toilets that won’t go down, or a line that keeps backing up.",
+      "benefit": "Get the water moving again without tearing the house apart first."
+    },
+    {
+      "name": "Water heaters",
+      "what": "No hot water, lukewarm showers, or a tank that’s leaking or rumbling.",
+      "benefit": "Hot water back on, or a straight answer if the tank is done."
+    },
+    {
+      "name": "Faucets and fixtures",
+      "what": "Drips, weak spray, a handle that won’t shut off, a toilet that runs all night.",
+      "benefit": "The small leak you ignore is the one that hits the water bill."
+    },
+    {
+      "name": "Sewer line trouble",
+      "what": "Backups in more than one drain, gurgling, or a sewage smell.",
+      "benefit": "Catch a line problem before it comes up through the floor."
+    },
+    {
+      "name": "Camera look at the line",
+      "what": "A camera down the pipe so you can see the clog, the break, or the roots.",
+      "benefit": "You pay for the real problem, not a guess."
+    }
   ],
   "unsplash": {
     "id": "NVLEjn1JPic",
     "image_url": "https://images.unsplash.com/photo-1749518295752-ec8c951bc4a1?auto=format&fit=crop&w=1600&q=80",
     "photographer": "Christie Luke",
     "unsplash_page": "https://unsplash.com/photos/water-pipes-and-a-bucket-hang-on-a-wall-NVLEjn1JPic"
-  }
+  },
+  "process": [
+    {
+      "title": "You call the shop",
+      "body": "The number on this page rings them. Say what’s going on. A burst pipe and a dripping faucet are different jobs."
+    },
+    {
+      "title": "They tell you if they can take it",
+      "body": "Ask if they cover your street and when someone can come. If they can’t, you still have a real person on the line."
+    },
+    {
+      "title": "They look, then they talk",
+      "body": "A tech should explain what they found and the options before they start cutting or replacing anything."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "How do I know I need a plumber?",
+      "a": "Water where it shouldn’t be, a drain that won’t go down, no hot water, or more than one fixture backing up. If you’re not sure, call and describe it."
+    },
+    {
+      "q": "What should I do while I wait?",
+      "a": "If water is running, shut it off at the fixture or the main valve (often in the garage, laundry, or near the water heater). Don’t keep flushing a backed-up toilet."
+    },
+    {
+      "q": "Do they come to {city}?",
+      "a": "This shop is listed in {city}. Tap Call and ask if they cover your street. Don’t guess from a map."
+    },
+    {
+      "q": "How do I reach them?",
+      "a": "Call {phone}. That’s the shop number on this page, not a call center we invented."
+    }
+  ]
 }

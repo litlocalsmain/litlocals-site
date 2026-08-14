@@ -633,3 +633,80 @@ h2 {
   .brand { margin-right: auto; }
   .facts div { grid-template-columns: 1fr; gap: 0.25rem; }
 }
+
+.svc a {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  color: inherit;
+  text-decoration: none;
+  width: 100%;
+}
+.svc a:hover { color: inherit; }
+.svc a:hover span:last-child { text-decoration: underline; text-underline-offset: 0.18em; }
+
+.svc-what {
+  margin: 0 0 0.85rem;
+  font-size: 1.15rem;
+  max-width: 36rem;
+}
+.svc-why {
+  margin: 0 0 1.1rem;
+  color: var(--muted);
+  max-width: 36rem;
+}
+
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.25rem;
+}
+.steps li {
+  display: grid;
+  grid-template-columns: 2.4rem 1fr;
+  gap: 0.9rem;
+  align-items: start;
+}
+.step-n {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  background: var(--gold);
+  color: var(--btn-ink);
+  font-weight: 800;
+}
+.steps h3 {
+  margin: 0 0 0.35rem;
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.steps p { margin: 0; color: var(--muted); }
+
+.faq-list { display: grid; gap: 1.35rem; }
+.faq h3 {
+  margin: 0 0 0.4rem;
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.faq p { margin: 0; color: var(--muted); max-width: 36rem; }
+
+.call-band {
+  padding: 2.75rem 0;
+  background: var(--ink);
+  color: var(--bg);
+}
+.call-band p {
+  margin: 0 0 1.1rem;
+  font-family: var(--serif);
+  font-size: clamp(1.35rem, 3.5vw, 1.75rem);
+  font-weight: 600;
+  line-height: 1.25;
+  max-width: 28rem;
+}
+.call-band .btn { background: #c5a059; color: #1c1916; border-color: #c5a059; }

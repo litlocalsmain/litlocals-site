@@ -6,17 +6,73 @@
   "headline_template": "On the roof before the next rain.",
   "lede_template": "Leaks, shingles, and a look before the weather turns in {city}.",
   "services": [
-    "Leak repair",
-    "Shingle replacement",
-    "Roof inspections",
-    "Flat roofs",
-    "Gutters",
-    "Storm damage look-over"
+    {
+      "name": "Leak repair",
+      "what": "Water coming through after rain, a stain that grows, or a drip you can time to the weather.",
+      "benefit": "Stop the leak before the drywall and insulation go with it."
+    },
+    {
+      "name": "Shingle replacement",
+      "what": "Missing, curled, or bald shingles that leave the deck exposed.",
+      "benefit": "Close the hole in the roof, not just the stain on the ceiling."
+    },
+    {
+      "name": "Roof inspections",
+      "what": "A look at the field, flashings, and vents before you buy, sell, or file a claim.",
+      "benefit": "You hear what’s wrong before the next storm writes the report."
+    },
+    {
+      "name": "Flat roofs",
+      "what": "Ponding, blisters, or seams that opened on a low-slope roof.",
+      "benefit": "A flat roof fails quietly. Catch it before the office or unit below pays."
+    },
+    {
+      "name": "Gutters",
+      "what": "Overflow, pulling away from the fascia, or water dumping next to the foundation.",
+      "benefit": "Get water off the roof and away from the house."
+    },
+    {
+      "name": "Storm damage look-over",
+      "what": "After wind or hail — lifted shingles, bruised mats, or a tarp that won’t last.",
+      "benefit": "A clear list of what’s damaged, not a guess from the street."
+    }
   ],
   "unsplash": {
     "id": "bquoYvs3KtQ",
     "image_url": "https://images.unsplash.com/photo-1763665814605-a6489a3bf2a0?auto=format&fit=crop&w=1600&q=80",
     "photographer": "Sergej Karpow",
     "unsplash_page": "https://unsplash.com/photos/workers-installing-shingles-on-a-steep-roof-bquoYvs3KtQ"
-  }
+  },
+  "process": [
+    {
+      "title": "You call the shop",
+      "body": "The number on this page rings them. Say if you see a leak, missing shingles, or storm damage."
+    },
+    {
+      "title": "They tell you if they can take it",
+      "body": "Ask if they cover your street and when they can look. After a storm, say so up front."
+    },
+    {
+      "title": "They look, then they talk",
+      "body": "Someone should get on the roof or in the attic, then tell you repair vs replace before they start tearing off."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "How do I know I need a roofer?",
+      "a": "Stains on the ceiling, missing shingles, granules in the gutters, or a leak after rain. If you’re not sure, call and describe it."
+    },
+    {
+      "q": "What should I do while I wait?",
+      "a": "Put a bucket under an active drip. Don’t walk a wet roof. If a leak is over a light, kill that breaker."
+    },
+    {
+      "q": "Do they come to {city}?",
+      "a": "This shop is listed in {city}. Tap Call and ask if they cover your street."
+    },
+    {
+      "q": "How do I reach them?",
+      "a": "Call {phone}. That’s the shop number on this page."
+    }
+  ]
 }

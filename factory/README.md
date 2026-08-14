@@ -7,7 +7,8 @@ One layout engine. Six trade packs. Photo fallback. One Python builder.
 Magical but dumb. No CMS. No customer accounts. No email. No deploy.
 Company: Lit Locals only. Not AISMB Agency. Not a ChatGPT install.
 
-v1.1 adds scroll reveal, service cards with trade icons, pack gold-family accents, and a desktop split hero. Sales chrome is a gold preview bar with Buy now, plus a Lit Locals overlay that appears when they hit the bottom. Not a shop section. Price and Henry-sends rules are unchanged.
+v1.1 adds scroll reveal, service cards with trade icons, pack gold-family accents, and a desktop split hero. Sales chrome is a gold preview bar with Buy now, plus a Lit Locals overlay that appears when they hit the bottom. Not a shop section. Each pack now has service what/why copy, a three-step “what happens when you call,” area, and FAQ. Reviews and hours still only render if the prospect JSON has them.
+Price and Henry-sends rules are unchanged.
 
 ## How to run
 

@@ -35,8 +35,10 @@
         <span class="brand-name">{{name}}</span>
       </a>
       <nav class="nav" aria-label="On this page">
-        <a href="#hours">Hours</a>
         <a href="#services">Services</a>
+        <a href="#area">Area</a>
+        <a href="#expect">What to expect</a>
+        <a href="#faq">FAQ</a>
         <a href="#call">Call</a>
       </nav>
       <a class="btn btn-gold header-cta" href="{{phone_tel}}">Call {{phone}}</a>
@@ -79,7 +81,17 @@
       </div>
     </section>
 
+    {{service_details}}
+
+    {{area_block}}
+
+    {{process_block}}
+
+    {{faq_block}}
+
     {{listings_block}}
+
+    {{call_band}}
 
   </main>
 
@@ -101,8 +113,8 @@
     <p class="buy-pop-kicker">Lit Locals — not their live site</p>
     <p class="buy-pop-title">$750 deposit claims this draft</p>
     <p>Locks in the $1,500 price while you think. Remainder when we go live or send the zip.</p>
-    <p class="buy-pop-guarantee">72-hour money-back on the full $1,500. Not just the deposit.</p>
-    <p class="buy-pop-help">Questions? Dedicated help for this draft. We reply to you.</p>
+    <p class="buy-pop-guarantee">72 hours after the $750 lands, you can cancel. We refund that $750. After 72 hours, the deposit is earned.</p>
+    <p class="buy-pop-help">Questions? Email hello@litlocals.com.</p>
     <a class="btn btn-gold" href="{{buy_href}}">Buy now — $750 deposit</a>
     <a class="btn btn-ask" href="{{ask_href}}">Ask a question</a>
   </div>

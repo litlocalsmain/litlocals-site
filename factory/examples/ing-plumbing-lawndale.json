@@ -5,5 +5,7 @@
   "city": "Lawndale, CA",
   "phone": "(424) 221-0086",
   "photo_url": "",
-  "notes": "Frozen LA hunt card #2. Site missing. No Google Business Profile (checked 13 Aug 2026 PT). No hours, no reviews, no listing photo. Phone from public BuildZoom/BBB directories, not a Google card. Do not invent reviews or a shop photo. Do not contact. Test draft for Henry only."
+  "notes": "Frozen LA hunt card #2. Site missing. No Google Business Profile (checked 13 Aug 2026 PT). No hours, no reviews, no listing photo. Phone from public BuildZoom/BBB directories, not a Google card. Do not invent reviews or a shop photo. Do not contact. Test draft for Henry only.",
+  "stripe_url": "https://buy.stripe.com/test_14AcN53KA7Z2fBffxa14400",
+  "preview_url": "https://lit-locals-previews-ai-smb-agency.vercel.app/p/k7m2x9ingp/"
 }

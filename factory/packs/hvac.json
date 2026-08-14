@@ -6,17 +6,73 @@
   "headline_template": "Keeps the house from cooking.",
   "lede_template": "AC, heat, and tune-ups in {city}.",
   "services": [
-    "AC repair",
-    "Furnace and heat",
-    "Tune-ups before summer and winter",
-    "Thermostats",
-    "Duct work",
-    "New unit installs"
+    {
+      "name": "AC repair",
+      "what": "The house won’t cool, the unit runs and blows warm, or it shut off on a hot day.",
+      "benefit": "Cool air back on before you sleep in a hot house."
+    },
+    {
+      "name": "Furnace and heat",
+      "what": "No heat, cold rooms, or a furnace that clicks and doesn’t fire.",
+      "benefit": "The house warm again, and a clear answer if a part is done."
+    },
+    {
+      "name": "Tune-ups before summer and winter",
+      "what": "A check before the first heat wave or cold snap — filters, coils, safeties.",
+      "benefit": "Catch a weak unit before it dies on the worst day of the year."
+    },
+    {
+      "name": "Thermostats",
+      "what": "A thermostat that lies, won’t hold a setting, or won’t talk to the system.",
+      "benefit": "The system runs when you ask, not when it feels like it."
+    },
+    {
+      "name": "Duct work",
+      "what": "Weak airflow, hot and cold rooms, or ducts that leak in the attic.",
+      "benefit": "The air you already paid to heat or cool actually reaches the rooms."
+    },
+    {
+      "name": "New unit installs",
+      "what": "A system that’s too far gone to keep patching.",
+      "benefit": "A straight recommendation, not a scare into the most expensive unit."
+    }
   ],
   "unsplash": {
     "id": "Al9lWh3XKGM",
     "image_url": "https://images.unsplash.com/photo-1758798157512-f0a864c696c9?auto=format&fit=crop&w=1600&q=80",
     "photographer": "Khanh Do",
     "unsplash_page": "https://unsplash.com/photos/close-up-of-an-air-conditioning-unit-on-a-sunny-day-Al9lWh3XKGM"
-  }
+  },
+  "process": [
+    {
+      "title": "You call the shop",
+      "body": "The number on this page rings them. Say if the house is hot, cold, or the unit is making a new noise."
+    },
+    {
+      "title": "They tell you if they can take it",
+      "body": "Ask if they cover your street and when a tech can come. Summer AC and winter heat book up."
+    },
+    {
+      "title": "They look, then they talk",
+      "body": "A tech should say what failed and the options — repair, part, or a new unit — before they start."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "How do I know I need an HVAC tech?",
+      "a": "No cool air, no heat, ice on the lines, a burning smell, or a unit that short-cycles. If you’re not sure, call and describe it."
+    },
+    {
+      "q": "What should I do while I wait?",
+      "a": "Check the thermostat batteries and the breaker. Change a filthy filter if you can reach it. Don’t keep resetting a unit that trips."
+    },
+    {
+      "q": "Do they come to {city}?",
+      "a": "This shop is listed in {city}. Tap Call and ask if they cover your street."
+    },
+    {
+      "q": "How do I reach them?",
+      "a": "Call {phone}. That’s the shop number on this page."
+    }
+  ]
 }

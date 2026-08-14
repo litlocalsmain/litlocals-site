@@ -6,17 +6,73 @@
   "headline_template": "Keeps the yard looking like someone lives here.",
   "lede_template": "Mowing, cleanup, and the jobs that pile up in {city}.",
   "services": [
-    "Mowing and edging",
-    "Cleanup",
-    "Trees and shrubs",
-    "Irrigation",
-    "Mulch and beds",
-    "Seasonal work"
+    {
+      "name": "Mowing and edging",
+      "what": "Weekly or biweekly cuts so the yard doesn’t get away from you.",
+      "benefit": "The house looks kept when someone drives by or a tenant moves in."
+    },
+    {
+      "name": "Cleanup",
+      "what": "Leaves, fallen branches, and the mess after a windy week.",
+      "benefit": "Get the yard walkable again without a full weekend of bags."
+    },
+    {
+      "name": "Trees and shrubs",
+      "what": "Overgrown hedges, a tree on the lines, or a plant that’s dying in place.",
+      "benefit": "Shape it or take it out before it hits the house or the sidewalk."
+    },
+    {
+      "name": "Irrigation",
+      "what": "Heads that miss, a zone that won’t shut off, or a timer nobody understands.",
+      "benefit": "Water the plants, not the driveway, and stop the runoff ticket."
+    },
+    {
+      "name": "Mulch and beds",
+      "what": "Bare dirt, weeds taking the beds, or mulch that washed out.",
+      "benefit": "Beds that hold moisture and look finished, not forgotten."
+    },
+    {
+      "name": "Seasonal work",
+      "what": "The big jobs that show up with the season — cutbacks, leaf drops, pre-summer prep.",
+      "benefit": "A plan for the yard instead of reacting every time it gets ugly."
+    }
   ],
   "unsplash": {
     "id": "lDqVLNfCMJc",
     "image_url": "https://images.unsplash.com/photo-1764208637294-49d0eccacf40?auto=format&fit=crop&w=1600&q=80",
     "photographer": "Declan Sun",
     "unsplash_page": "https://unsplash.com/photos/lush-green-garden-with-mature-trees-and-manicured-lawn-lDqVLNfCMJc"
-  }
+  },
+  "process": [
+    {
+      "title": "You call the shop",
+      "body": "The number on this page rings them. Say if you need a one-time cleanup or a regular route."
+    },
+    {
+      "title": "They tell you if they can take it",
+      "body": "Ask if they cover your street and what day they run your block."
+    },
+    {
+      "title": "They look, then they talk",
+      "body": "Someone should walk the yard and say what’s included before the first mow or cut."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "How do I know I need a landscaper?",
+      "a": "Grass you can’t keep up with, a yard that’s gone after vacation, or irrigation that floods one bed and starves another."
+    },
+    {
+      "q": "What should I do while I wait?",
+      "a": "Move cars off the driveway if they need access. Shut off a broken sprinkler valve if you can find it."
+    },
+    {
+      "q": "Do they come to {city}?",
+      "a": "This shop is listed in {city}. Tap Call and ask if they cover your street."
+    },
+    {
+      "q": "How do I reach them?",
+      "a": "Call {phone}. That’s the shop number on this page."
+    }
+  ]
 }

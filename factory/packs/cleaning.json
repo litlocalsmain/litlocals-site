@@ -6,17 +6,73 @@
   "headline_template": "Leaves the place ready for company.",
   "lede_template": "Houses and small shops in {city}.",
   "services": [
-    "House cleaning",
-    "Move-out cleans",
-    "Kitchens and baths",
-    "Small offices",
-    "Recurring visits",
-    "One-time deep cleans"
+    {
+      "name": "House cleaning",
+      "what": "The regular clean — floors, baths, kitchen surfaces, dust.",
+      "benefit": "The house stays livable without you spending the weekend on it."
+    },
+    {
+      "name": "Move-out cleans",
+      "what": "Empty-house clean so a landlord or buyer can walk it.",
+      "benefit": "A better shot at the deposit or a listing that doesn’t smell like the last tenant."
+    },
+    {
+      "name": "Kitchens and baths",
+      "what": "Grease, grout, and the rooms that make or break a walkthrough.",
+      "benefit": "The two rooms people judge first actually look handled."
+    },
+    {
+      "name": "Small offices",
+      "what": "A shop, suite, or small office that needs emptying of trash and a real floor clean.",
+      "benefit": "Clients walk into a place that looks open, not abandoned."
+    },
+    {
+      "name": "Recurring visits",
+      "what": "A set day so the same mess doesn’t pile up for a month.",
+      "benefit": "You stop negotiating “when can you come” every time."
+    },
+    {
+      "name": "One-time deep cleans",
+      "what": "The reset after a party, a renovation, or a long skip.",
+      "benefit": "Start from clean, then keep it with a lighter visit."
+    }
   ],
   "unsplash": {
     "id": "7YJV_3uLF4o",
     "image_url": "https://images.unsplash.com/photo-1778178965223-e5a29e612504?auto=format&fit=crop&w=1600&q=80",
     "photographer": "Gaana Srinivas",
     "unsplash_page": "https://unsplash.com/photos/a-yellow-sponge-casts-a-shadow-on-a-blue-background-7YJV_3uLF4o"
-  }
+  },
+  "process": [
+    {
+      "title": "You call the shop",
+      "body": "The number on this page rings them. Say if it’s a one-time clean, a move-out, or a regular visit."
+    },
+    {
+      "title": "They tell you if they can take it",
+      "body": "Ask if they cover your street, what’s included, and whether you need to be home."
+    },
+    {
+      "title": "They look, then they talk",
+      "body": "For a first visit they should confirm rooms and extras (oven, fridge, inside windows) before they start."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "How do I know I need a cleaning crew?",
+      "a": "A move-out that has to pass inspection, a kitchen you can’t get back, or a schedule that doesn’t leave a Saturday for it."
+    },
+    {
+      "q": "What should I do while I wait?",
+      "a": "Clear counters if you can. Lock up jewelry and cash. Say if pets will be home."
+    },
+    {
+      "q": "Do they come to {city}?",
+      "a": "This shop is listed in {city}. Tap Call and ask if they cover your street."
+    },
+    {
+      "q": "How do I reach them?",
+      "a": "Call {phone}. That’s the shop number on this page."
+    }
+  ]
 }

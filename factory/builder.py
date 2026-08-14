@@ -336,19 +336,172 @@ def listings_block(prospect: dict) -> str:
     )
 
 
+def svc_name(svc) -> str:
+    if isinstance(svc, dict):
+        return str(svc.get("name") or "").strip()
+    return str(svc).strip()
+
+
 def services_items(pack: dict) -> str:
     icon = TRADE_ICONS.get(pack.get("id") or "", "")
     items = []
     for svc in pack.get("services") or []:
-        label = str(svc).strip()
+        label = svc_name(svc)
         if not label:
             continue
+        sid = slugify(label)
         items.append(
             f'          <li class="svc">'
+            f'<a href="#svc-{escape(sid, quote=True)}">'
             f'<span class="svc-icon" aria-hidden="true">{icon}</span>'
-            f"<span>{escape(label)}</span></li>"
+            f"<span>{escape(label)}</span></a></li>"
         )
     return "\n".join(items)
+
+
+def service_details(pack: dict, prospect: dict) -> str:
+    phone = str(prospect.get("phone") or "").strip()
+    tel = escape(tel_href(phone), quote=True) if phone else ""
+    phone_l = escape(phone)
+    blocks = []
+    for i, svc in enumerate(pack.get("services") or []):
+        if not isinstance(svc, dict):
+            continue
+        name = str(svc.get("name") or "").strip()
+        what = str(svc.get("what") or "").strip()
+        benefit = str(svc.get("benefit") or "").strip()
+        if not name or not (what or benefit):
+            continue
+        sid = slugify(name)
+        alt = " section-alt" if i % 2 == 0 else ""
+        call = ""
+        if tel:
+            call = (
+                f'        <p class="tap-note"><a href="{tel}">Call {phone_l} about {escape(name)}</a></p>\n'
+            )
+        blocks.append(
+            f'    <section class="section{alt} reveal" id="svc-{escape(sid, quote=True)}" aria-labelledby="svc-{escape(sid, quote=True)}-title">\n'
+            f'      <div class="wrap">\n'
+            f'        <p class="eyebrow">Service</p>\n'
+            f'        <h2 id="svc-{escape(sid, quote=True)}-title">{escape(name)}</h2>\n'
+            + (f'        <p class="svc-what">{escape(what)}</p>\n' if what else "")
+            + (f'        <p class="svc-why"><strong>Why it matters.</strong> {escape(benefit)}</p>\n' if benefit else "")
+            + call
+            + "      </div>\n"
+            "    </section>\n"
+        )
+    return "\n".join(blocks)
+
+
+def fill_city_phone(text: str, prospect: dict) -> str:
+    return (
+        (text or "")
+        .replace("{city}", str(prospect.get("city") or "").strip())
+        .replace("{phone}", str(prospect.get("phone") or "").strip())
+        .replace("{name}", str(prospect.get("name") or "").strip())
+    )
+
+
+def process_block(pack: dict, prospect: dict) -> str:
+    steps = pack.get("process") or []
+    if not steps:
+        return ""
+    lis = []
+    for i, step in enumerate(steps, 1):
+        if not isinstance(step, dict):
+            continue
+        title = fill_city_phone(str(step.get("title") or ""), prospect)
+        body = fill_city_phone(str(step.get("body") or ""), prospect)
+        if not title:
+            continue
+        lis.append(
+            "          <li>\n"
+            f'            <span class="step-n">{i}</span>\n'
+            f"            <div>\n"
+            f"              <h3>{escape(title)}</h3>\n"
+            f"              <p>{escape(body)}</p>\n"
+            "            </div>\n"
+            "          </li>"
+        )
+    if not lis:
+        return ""
+    return (
+        '    <section class="section reveal" id="expect" aria-labelledby="expect-title">\n'
+        '      <div class="wrap">\n'
+        '        <h2 id="expect-title">What happens when you call</h2>\n'
+        f'        <ol class="steps">\n' + "\n".join(lis) + "\n        </ol>\n"
+        "      </div>\n"
+        "    </section>\n"
+    )
+
+
+def faq_block(pack: dict, prospect: dict) -> str:
+    faqs = pack.get("faqs") or []
+    if not faqs:
+        return ""
+    items = []
+    for faq in faqs:
+        if not isinstance(faq, dict):
+            continue
+        q = fill_city_phone(str(faq.get("q") or ""), prospect)
+        a = fill_city_phone(str(faq.get("a") or ""), prospect)
+        if not q or not a:
+            continue
+        items.append(
+            "          <div class=\"faq\">\n"
+            f"            <h3>{escape(q)}</h3>\n"
+            f"            <p>{escape(a)}</p>\n"
+            "          </div>"
+        )
+    if not items:
+        return ""
+    return (
+        '    <section class="section section-alt reveal" id="faq" aria-labelledby="faq-title">\n'
+        '      <div class="wrap">\n'
+        '        <h2 id="faq-title">Before you call</h2>\n'
+        f'        <div class="faq-list">\n' + "\n".join(items) + "\n        </div>\n"
+        "      </div>\n"
+        "    </section>\n"
+    )
+
+
+def area_block(prospect: dict) -> str:
+    city = str(prospect.get("city") or "").strip()
+    area = str(prospect.get("service_area") or "").strip() or city
+    phone = str(prospect.get("phone") or "").strip()
+    if not area:
+        return ""
+    tel = escape(tel_href(phone), quote=True) if phone else ""
+    call = f'        <p class="tap-note"><a href="{tel}">Tap to call {escape(phone)}</a></p>\n' if tel else ""
+    return (
+        '    <section class="section reveal" id="area" aria-labelledby="area-title">\n'
+        '      <div class="wrap">\n'
+        '        <h2 id="area-title">Are they near you?</h2>\n'
+        f'        <p class="lede">Listed in {escape(area)}. If that sounds like your neighborhood, call and ask if they cover your street.</p>\n'
+        + call
+        + "      </div>\n"
+        "    </section>\n"
+    )
+
+
+def call_band(prospect: dict) -> str:
+    phone = str(prospect.get("phone") or "").strip()
+    if not phone:
+        return ""
+    tel = escape(tel_href(phone), quote=True)
+    return (
+        '    <section class="call-band reveal" id="reach" aria-label="Call the shop">\n'
+        '      <div class="wrap">\n'
+        '        <p>The number on this page rings the shop. That’s how you know it isn’t a mockup.</p>\n'
+        f'        <a class="btn btn-gold btn-lg" href="{tel}">Call {escape(phone)}</a>\n'
+        "      </div>\n"
+        "    </section>\n"
+    )
+
+
+def slugify(name: str) -> str:
+    s = re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
+    return s or "service"
 
 
 def unsplash_credit(hero: dict | None) -> str:
@@ -455,6 +608,11 @@ def build(prospect_path: Path) -> Path:
         "reviews_block": reviews_block(prospect),
         "services_items": services_items(pack),
         "listings_block": listings_block(prospect),
+        "service_details": service_details(pack, prospect),
+        "process_block": process_block(pack, prospect),
+        "faq_block": faq_block(pack, prospect),
+        "area_block": area_block(prospect),
+        "call_band": call_band(prospect),
         "unsplash_credit": unsplash_credit(hero),
     }
 
