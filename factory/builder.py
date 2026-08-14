@@ -1,0 +1,399 @@
+#!/usr/bin/env python3
+"""Lit Locals preview factory.
+
+Turn a prospect JSON into a static draft site. Magical but dumb.
+No CMS. No customer accounts. No email. No deploy.
+
+Usage:
+    python3 builder.py examples/hector-plumbing.json
+
+Writes out/{slug}/index.html, styles.css, assets/hero.*, assets/mark.svg
+
+The 48-hour $1,500 clock is NOT started here. The preview bar uses a
+placeholder. Henry starts the clock when he sends.
+"""
+
+from __future__ import annotations
+
+import json
+import re
+import shutil
+import sys
+import urllib.error
+import urllib.request
+from html import escape
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent
+LAYOUT = ROOT / "layout"
+PACKS = ROOT / "packs"
+OUT = ROOT / "out"
+PRODUCT_MARK = Path("/workspace/litlocals/product-site/assets/mark.svg")
+LOCAL_MARK = ROOT / "assets" / "mark.svg"
+
+UA = "LitLocalsPreviewFactory/1.0 (+https://litlocals.com; draft builder, not a crawler)"
+VERTICALS = ("hvac", "plumbing", "roofing", "landscaping", "cleaning", "electrical")
+EXPIRY_PLACEHOLDER = "48 hours after we send this"
+STARTER_CAPTION = "Starter photo — not their crew."
+MAX_REVIEWS = 3
+DOWNLOAD_TIMEOUT = 30
+
+# ---------------------------------------------------------------------------
+# IO
+# ---------------------------------------------------------------------------
+
+
+def die(msg: str, code: int = 1) -> None:
+    print(f"builder: {msg}", file=sys.stderr)
+    raise SystemExit(code)
+
+
+def load_json(path: Path) -> dict:
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        die(f"not found: {path}")
+    except json.JSONDecodeError as err:
+        die(f"bad JSON in {path}: {err}")
+    if not isinstance(data, dict):
+        die(f"{path} must be a JSON object")
+    return data
+
+
+def load_pack(vertical: str) -> dict:
+    path = PACKS / f"{vertical}.json"
+    if not path.exists():
+        die(f"no trade pack for vertical {vertical!r} ({path})")
+    pack = load_json(path)
+    if pack.get("id") != vertical:
+        die(f"pack id mismatch in {path}")
+    return pack
+
+
+def fill_words(template: str, prospect: dict) -> str:
+    return (template or "").replace("{name}", prospect["name"]).replace("{city}", prospect["city"])
+
+
+def is_http_url(value: object) -> bool:
+    if not isinstance(value, str):
+        return False
+    v = value.strip().lower()
+    return v.startswith("http://") or v.startswith("https://")
+
+
+def slug_ok(slug: str) -> bool:
+    return bool(re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", slug or ""))
+
+
+def tel_href(phone: str) -> str:
+    digits = re.sub(r"\D", "", phone or "")
+    if not digits:
+        die("phone has no digits")
+    if len(digits) == 10:
+        return f"tel:+1{digits}"
+    if len(digits) == 11 and digits.startswith("1"):
+        return f"tel:+{digits}"
+    if phone.strip().startswith("+"):
+        plus = re.sub(r"[^\d+]", "", phone)
+        return f"tel:{plus}"
+    return f"tel:{digits}"
+
+
+# ---------------------------------------------------------------------------
+# Photos
+# ---------------------------------------------------------------------------
+
+
+def _ext_from_bytes(data: bytes, content_type: str) -> str:
+    head = data[:16]
+    ctype = (content_type or "").split(";")[0].strip().lower()
+    if head.startswith(b"\xff\xd8\xff") or ctype in ("image/jpeg", "image/jpg"):
+        return ".jpg"
+    if head.startswith(b"RIFF") and b"WEBP" in head[:16] or ctype == "image/webp":
+        return ".webp"
+    if head.startswith(b"\x89PNG") or ctype == "image/png":
+        return ".png"
+    if head.startswith(b"GIF8") or ctype == "image/gif":
+        return ".gif"
+    return ".jpg"
+
+
+def download_image(url: str, dest_dir: Path) -> Path | None:
+    req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "image/*,*/*;q=0.8"})
+    try:
+        with urllib.request.urlopen(req, timeout=DOWNLOAD_TIMEOUT) as resp:
+            data = resp.read()
+            ctype = resp.headers.get("Content-Type", "")
+    except (urllib.error.URLError, TimeoutError, ValueError) as err:
+        print(f"builder: photo download failed ({url}): {err}", file=sys.stderr)
+        return None
+    if len(data) < 32:
+        print(f"builder: photo too small ({url})", file=sys.stderr)
+        return None
+    ext = _ext_from_bytes(data, ctype)
+    dest = dest_dir / f"hero{ext}"
+    dest.write_bytes(data)
+    print(f"builder: saved {dest.name} ({len(data)} bytes) from {url.split('?')[0]}")
+    return dest
+
+
+def copy_local_hero(vertical: str, dest_dir: Path) -> Path | None:
+    heroes = PACKS / "heroes"
+    for ext in (".jpg", ".jpeg", ".webp", ".png"):
+        src = heroes / f"{vertical}{ext}"
+        if src.exists():
+            dest = dest_dir / f"hero{src.suffix.lower().replace('.jpeg', '.jpg')}"
+            shutil.copy2(src, dest)
+            print(f"builder: copied local AI fallback {src.name}")
+            return dest
+    return None
+
+
+def resolve_hero(prospect: dict, pack: dict, assets: Path) -> dict | None:
+    """Listing photo, else local job-site hero, else Unsplash. Never a random object close-up."""
+    photo_url = (prospect.get("photo_url") or "").strip()
+    if is_http_url(photo_url):
+        path = download_image(photo_url, assets)
+        if path:
+            return {"file": path.name, "kind": "listing"}
+        print("builder: listing photo_url failed; trying local job-site hero", file=sys.stderr)
+
+    path = copy_local_hero(pack["id"], assets)
+    if path:
+        return {"file": path.name, "kind": "ai"}
+
+    unsplash = pack.get("unsplash") or {}
+    image_url = (unsplash.get("image_url") or "").strip()
+    if is_http_url(image_url):
+        path = download_image(image_url, assets)
+        if path:
+            return {
+                "file": path.name,
+                "kind": "unsplash",
+                "photographer": unsplash.get("photographer") or "",
+                "unsplash_page": unsplash.get("unsplash_page") or "",
+            }
+
+    print("builder: no hero image (listing, local job-site, and Unsplash all missed)", file=sys.stderr)
+    return None
+
+
+# ---------------------------------------------------------------------------
+# HTML fragments
+# ---------------------------------------------------------------------------
+
+
+def hero_block(hero: dict | None) -> str:
+    if not hero:
+        return ""
+    src = escape(f"assets/{hero['file']}", quote=True)
+    if hero["kind"] == "listing":
+        alt = "Shop photo"
+        caption = ""
+    else:
+        alt = escape(STARTER_CAPTION, quote=True)
+        caption = f'      <p class="hero-caption">{escape(STARTER_CAPTION)}</p>\n'
+    return (
+        f'<figure class="hero-photo">\n'
+        f'        <img src="{src}" alt="{alt}" width="1600" height="900">\n'
+        f"{caption}"
+        f"      </figure>\n"
+    )
+
+
+def facts_rows(prospect: dict) -> str:
+    rows = []
+    mapping = [
+        ("Phone", prospect.get("phone")),
+        ("Hours", prospect.get("hours")),
+        ("Service area", prospect.get("service_area")),
+        ("City", prospect.get("city")),
+    ]
+    for label, value in mapping:
+        if not value or not str(value).strip():
+            continue
+        rows.append(
+            "          <div>\n"
+            f"            <dt>{escape(label)}</dt>\n"
+            f"            <dd>{escape(str(value).strip())}</dd>\n"
+            "          </div>"
+        )
+    return "\n".join(rows)
+
+
+def reviews_block(prospect: dict) -> str:
+    """Only quotes present in JSON. Never invent."""
+    raw = prospect.get("reviews")
+    if not raw or not isinstance(raw, list):
+        return ""
+    items = []
+    for entry in raw:
+        if not isinstance(entry, dict):
+            continue
+        quote = (entry.get("quote") or "").strip()
+        if not quote:
+            continue
+        stars = entry.get("stars")
+        star_html = ""
+        if isinstance(stars, int) and 1 <= stars <= 5:
+            star_html = f'\n              <span class="stars" aria-label="{stars} out of 5">{"★" * stars}{"☆" * (5 - stars)}</span>'
+        items.append(
+            "          <li>\n"
+            f"            <blockquote>{escape(quote)}</blockquote>{star_html}\n"
+            "          </li>"
+        )
+        if len(items) >= MAX_REVIEWS:
+            break
+    if not items:
+        return ""
+    inner = "\n".join(items)
+    return (
+        '    <section class="section section-alt" id="reviews" aria-labelledby="reviews-title">\n'
+        '      <div class="wrap">\n'
+        '        <h2 id="reviews-title">What people wrote</h2>\n'
+        f'        <ul class="quotes">\n{inner}\n        </ul>\n'
+        "      </div>\n"
+        "    </section>\n"
+    )
+
+
+def listings_block(prospect: dict) -> str:
+    links = []
+    google = (prospect.get("google_url") or "").strip()
+    yelp = (prospect.get("yelp_url") or "").strip()
+    if is_http_url(google):
+        links.append(
+            f'          <li><a href="{escape(google, quote=True)}" rel="nofollow noopener">Google listing</a></li>'
+        )
+    if is_http_url(yelp):
+        links.append(
+            f'          <li><a href="{escape(yelp, quote=True)}" rel="nofollow noopener">Yelp listing</a></li>'
+        )
+    if not links:
+        return ""
+    inner = "\n".join(links)
+    return (
+        '    <section class="section" id="listings" aria-labelledby="listings-title">\n'
+        '      <div class="wrap">\n'
+        '        <h2 id="listings-title">Find them</h2>\n'
+        f'        <ul class="listings">\n{inner}\n        </ul>\n'
+        "      </div>\n"
+        "    </section>\n"
+    )
+
+
+def services_items(pack: dict) -> str:
+    items = []
+    for svc in pack.get("services") or []:
+        if not str(svc).strip():
+            continue
+        items.append(f"          <li>{escape(str(svc).strip())}</li>")
+    return "\n".join(items)
+
+
+def unsplash_credit(hero: dict | None) -> str:
+    if not hero or hero.get("kind") != "unsplash":
+        return ""
+    name = (hero.get("photographer") or "").strip()
+    page = (hero.get("unsplash_page") or "").strip()
+    if not name:
+        return ""
+    if is_http_url(page):
+        return (
+            f'      <p class="footer-note">Photo by {escape(name)} on '
+            f'<a href="{escape(page, quote=True)}" rel="nofollow noopener">Unsplash</a>.</p>\n'
+        )
+    return f'      <p class="footer-note">Photo by {escape(name)} on Unsplash.</p>\n'
+
+
+def apply_template(template: str, mapping: dict[str, str]) -> str:
+    out = template
+    for key, value in mapping.items():
+        out = out.replace("{{" + key + "}}", value)
+    leftover = re.findall(r"\{\{[a-z0-9_]+\}\}", out)
+    if leftover:
+        die(f"unfilled template placeholders: {', '.join(leftover)}")
+    return out
+
+
+# ---------------------------------------------------------------------------
+# Build
+# ---------------------------------------------------------------------------
+
+
+def validate_prospect(p: dict) -> None:
+    for field in ("slug", "name", "vertical", "city", "phone"):
+        if not str(p.get(field) or "").strip():
+            die(f"missing required field: {field}")
+    if not slug_ok(p["slug"]):
+        die("slug must be lowercase letters, numbers, and hyphens")
+    if p["vertical"] not in VERTICALS:
+        die(f"vertical must be one of: {', '.join(VERTICALS)}")
+
+
+def copy_mark(assets: Path) -> None:
+    src = PRODUCT_MARK if PRODUCT_MARK.exists() else LOCAL_MARK
+    if not src.exists():
+        die(f"mark.svg not found at {PRODUCT_MARK} or {LOCAL_MARK}")
+    shutil.copy2(src, assets / "mark.svg")
+
+
+def build(prospect_path: Path) -> Path:
+    prospect = load_json(prospect_path)
+    validate_prospect(prospect)
+    pack = load_pack(prospect["vertical"])
+
+    dest = OUT / prospect["slug"]
+    assets = dest / "assets"
+    if dest.exists():
+        shutil.rmtree(dest)
+    assets.mkdir(parents=True)
+
+    hero = resolve_hero(prospect, pack, assets)
+    copy_mark(assets)
+    shutil.copy2(LAYOUT / "styles.css", dest / "styles.css")
+
+    buy = (prospect.get("stripe_url") or "").strip()
+    buy_href = buy if is_http_url(buy) else "#buy"
+
+    phone = prospect["phone"].strip()
+    mapping = {
+        "name": escape(prospect["name"]),
+        "city": escape(prospect["city"]),
+        "phone": escape(phone),
+        "phone_tel": escape(tel_href(phone), quote=True),
+        "eyebrow": escape(pack.get("eyebrow") or pack.get("label") or ""),
+        "headline": escape(fill_words(pack.get("headline_template") or "", prospect)),
+        "lede": escape(fill_words(pack.get("lede_template") or "", prospect)),
+        "buy_href": escape(buy_href, quote=True),
+        "hero_block": hero_block(hero),
+        "facts_rows": facts_rows(prospect),
+        "reviews_block": reviews_block(prospect),
+        "services_items": services_items(pack),
+        "listings_block": listings_block(prospect),
+        "unsplash_credit": unsplash_credit(hero),
+    }
+
+    template = (LAYOUT / "template.html").read_text(encoding="utf-8")
+    html = apply_template(template, mapping)
+    index = dest / "index.html"
+    index.write_text(html, encoding="utf-8")
+    print(f"builder: wrote {index}")
+    return dest
+
+
+def main(argv: list[str]) -> None:
+    if len(argv) != 2 or argv[1] in ("-h", "--help"):
+        print("Usage: python3 builder.py examples/hector-plumbing.json")
+        print("Writes a static draft to out/{slug}/. Does not send email. Does not deploy.")
+        raise SystemExit(0 if len(argv) != 2 else 2)
+    path = Path(argv[1])
+    if not path.is_absolute():
+        path = (Path.cwd() / path).resolve()
+    dest = build(path)
+    print(f"builder: done → {dest}")
+    print("builder: 48h clock not started. Henry starts it when he sends.")
+
+
+if __name__ == "__main__":
+    main(sys.argv)

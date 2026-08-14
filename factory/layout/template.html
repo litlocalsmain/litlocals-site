@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{name}} — draft</title>
+  <meta name="description" content="Draft site for {{name}} in {{city}}. Not live yet.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <meta name="theme-color" content="#f7f3ea">
+  <meta name="color-scheme" content="light">
+  <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <div class="preview-bar" role="status">
+    Draft for {{name}}. $1,500 if you buy by 48 hours after we send this. Then $2,500.
+  </div>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top" aria-label="{{name}}, top">
+        <img class="brand-mark" src="assets/mark.svg" alt="" width="72" height="48">
+        <span class="brand-name">{{name}}</span>
+      </a>
+      <nav class="nav" aria-label="On this page">
+        <a href="#hours">Hours</a>
+        <a href="#services">What’s included</a>
+        <a href="#call">Call</a>
+      </nav>
+      <a class="btn btn-gold header-cta" href="{{phone_tel}}">Call {{phone}}</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="shop-name">
+      {{hero_block}}
+      <div class="wrap hero-inner">
+        <p class="eyebrow">{{eyebrow}}</p>
+        <h1 id="shop-name">{{name}}</h1>
+        <p class="headline">{{headline}}</p>
+        <p class="lede">{{lede}}</p>
+        <div class="hero-actions">
+          <a class="btn btn-gold" href="{{phone_tel}}" id="call">Call {{phone}}</a>
+          <a class="btn btn-ghost" href="{{buy_href}}">Buy now — $1,500</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="hours" aria-labelledby="facts-title">
+      <div class="wrap">
+        <h2 id="facts-title">Hours, area, city</h2>
+        <dl class="facts">
+          {{facts_rows}}
+        </dl>
+        <p class="tap-note"><a href="{{phone_tel}}">Tap to call {{phone}}</a></p>
+      </div>
+    </section>
+
+    {{reviews_block}}
+
+    <section class="section section-alt" id="services" aria-labelledby="offer-title">
+      <div class="wrap">
+        <h2 id="offer-title">What’s included</h2>
+        <ul class="include-list">
+          {{services_items}}
+        </ul>
+      </div>
+    </section>
+
+    {{listings_block}}
+
+    <section class="section contact" id="buy" aria-labelledby="buy-title">
+      <div class="wrap">
+        <h2 id="buy-title">Buy this site</h2>
+        <p class="contact-copy">$1,500 if you buy within 48 hours. Then $2,500.</p>
+        <a class="btn btn-gold btn-lg" href="{{buy_href}}">Buy now</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>Draft by Lit Locals. Not their live site yet.</p>
+      {{unsplash_credit}}
+      <p class="footer-note">Lit Locals · local website upgrades · not a directory.</p>
+    </div>
+  </footer>
+
+  <div class="call-dock">
+    <a class="btn btn-gold btn-lg" href="{{phone_tel}}">Call {{phone}}</a>
+  </div>
+</body>
+</html>

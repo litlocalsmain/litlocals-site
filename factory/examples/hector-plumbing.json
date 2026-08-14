@@ -1,0 +1,14 @@
+{
+  "slug": "hector-plumbing",
+  "name": "Hector's Plumbing",
+  "vertical": "plumbing",
+  "city": "Bell, CA",
+  "phone": "(555) 010-1948",
+  "hours": "Mon–Sat 7am–6pm",
+  "service_area": "Bell, Cudahy, Maywood, and nearby southeast LA County",
+  "google_url": "https://example.com/google-hector-plumbing",
+  "yelp_url": "https://example.com/yelp-hector-plumbing",
+  "photo_url": "",
+  "example": true,
+  "notes": "EXAMPLE prospect for factory tests. Not a real shop. Not the frozen LA landscaper card (Hector J Clemente). 555 number is fictional. No reviews on purpose — factory must not invent any. Do not contact. Do not send."
+}

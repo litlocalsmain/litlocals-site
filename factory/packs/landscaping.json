@@ -1,0 +1,21 @@
+{
+  "id": "landscaping",
+  "label": "Landscaping",
+  "eyebrow": "Local yard work",
+  "headline_template": "{name} keeps the yard looking like someone lives here.",
+  "lede_template": "Yard work in {city}. Mowing, cleanup, and the jobs that pile up. Tap to call.",
+  "services": [
+    "Mowing and edging",
+    "Cleanup",
+    "Trees and shrubs",
+    "Irrigation",
+    "Mulch and beds",
+    "Seasonal work"
+  ],
+  "unsplash": {
+    "id": "lDqVLNfCMJc",
+    "image_url": "https://images.unsplash.com/photo-1764208637294-49d0eccacf40?auto=format&fit=crop&w=1600&q=80",
+    "photographer": "Declan Sun",
+    "unsplash_page": "https://unsplash.com/photos/lush-green-garden-with-mature-trees-and-manicured-lawn-lDqVLNfCMJc"
+  }
+}

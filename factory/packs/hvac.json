@@ -1,0 +1,21 @@
+{
+  "id": "hvac",
+  "label": "HVAC",
+  "eyebrow": "Local heating and cooling",
+  "headline_template": "{name} keeps the house from cooking.",
+  "lede_template": "Heating and cooling in {city}. The phone is on this page. Hours too. Tap to call.",
+  "services": [
+    "AC repair",
+    "Furnace and heat",
+    "Tune-ups before summer and winter",
+    "Thermostats",
+    "Duct work",
+    "New unit installs"
+  ],
+  "unsplash": {
+    "id": "Al9lWh3XKGM",
+    "image_url": "https://images.unsplash.com/photo-1758798157512-f0a864c696c9?auto=format&fit=crop&w=1600&q=80",
+    "photographer": "Khanh Do",
+    "unsplash_page": "https://unsplash.com/photos/close-up-of-an-air-conditioning-unit-on-a-sunny-day-Al9lWh3XKGM"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "plumbing",
+  "label": "Plumbing",
+  "eyebrow": "Local plumbing",
+  "headline_template": "{name} shows up when the pipe doesn’t.",
+  "lede_template": "A plumbing shop in {city}. Phone on the page. Hours on the page. Tap to call.",
+  "services": [
+    "Burst pipes and leaks",
+    "Clogged drains",
+    "Water heaters",
+    "Faucets and fixtures",
+    "Sewer line trouble",
+    "Camera look at the line"
+  ],
+  "unsplash": {
+    "id": "NVLEjn1JPic",
+    "image_url": "https://images.unsplash.com/photo-1749518295752-ec8c951bc4a1?auto=format&fit=crop&w=1600&q=80",
+    "photographer": "Christie Luke",
+    "unsplash_page": "https://unsplash.com/photos/water-pipes-and-a-bucket-hang-on-a-wall-NVLEjn1JPic"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "roofing",
+  "label": "Roofing",
+  "eyebrow": "Local roofing",
+  "headline_template": "{name} gets on the roof before the next rain.",
+  "lede_template": "Roof work in {city}. Leaks, shingles, and a look before the weather turns. Tap to call.",
+  "services": [
+    "Leak repair",
+    "Shingle replacement",
+    "Roof inspections",
+    "Flat roofs",
+    "Gutters",
+    "Storm damage look-over"
+  ],
+  "unsplash": {
+    "id": "bquoYvs3KtQ",
+    "image_url": "https://images.unsplash.com/photo-1763665814605-a6489a3bf2a0?auto=format&fit=crop&w=1600&q=80",
+    "photographer": "Sergej Karpow",
+    "unsplash_page": "https://unsplash.com/photos/workers-installing-shingles-on-a-steep-roof-bquoYvs3KtQ"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://litlocals.com/schema/prospect.json",
+  "title": "Lit Locals prospect (preview factory)",
+  "description": "Input card for the Lit Locals preview factory. Omit reviews, listing URLs, and photo_url when unknown. Never invent reviews.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["slug", "name", "vertical", "city", "phone"],
+  "properties": {
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "description": "Folder name under out/. Letters, numbers, hyphens."
+    },
+    "name": { "type": "string", "minLength": 1 },
+    "vertical": {
+      "type": "string",
+      "enum": ["hvac", "plumbing", "roofing", "landscaping", "cleaning", "electrical"]
+    },
+    "city": { "type": "string", "minLength": 1 },
+    "phone": { "type": "string", "minLength": 7 },
+    "hours": { "type": "string" },
+    "service_area": { "type": "string" },
+    "google_url": { "type": ["string", "null"], "description": "Public Google listing URL. Skip or empty if none." },
+    "yelp_url": { "type": ["string", "null"], "description": "Public Yelp listing URL. Skip or empty if none." },
+    "reviews": {
+      "type": "array",
+      "description": "Only real quotes from the prospect JSON. Omit the field if unknown. Factory never invents these.",
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "required": ["quote"],
+        "additionalProperties": true,
+        "properties": {
+          "quote": { "type": "string", "minLength": 1 },
+          "stars": { "type": "integer", "minimum": 1, "maximum": 5 }
+        }
+      }
+    },
+    "photo_url": {
+      "type": ["string", "null"],
+      "description": "http(s) listing photo. Empty or omit to use the trade-pack Unsplash, then packs/heroes/."
+    },
+    "stripe_url": {
+      "type": ["string", "null"],
+      "description": "Optional. Buy button href. Defaults to #buy."
+    }
+  }
+}

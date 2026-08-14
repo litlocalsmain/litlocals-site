@@ -1,0 +1,21 @@
+{
+  "id": "electrical",
+  "label": "Electrical",
+  "eyebrow": "Local electrical",
+  "headline_template": "{name} shows up when the lights don’t.",
+  "lede_template": "Electrical work in {city}. Panels, outlets, and the stuff that sparks. Tap to call.",
+  "services": [
+    "Outlets and switches",
+    "Panel work",
+    "Lighting",
+    "Ceiling fans",
+    "Troubleshooting",
+    "Adds and rewires"
+  ],
+  "unsplash": {
+    "id": "iOLHAIaxpDA",
+    "image_url": "https://images.unsplash.com/photo-1601462904263-f2fa0c851cb9?auto=format&fit=crop&w=1600&q=80",
+    "photographer": "Frames For Your Heart",
+    "unsplash_page": "https://unsplash.com/photos/yellow-blue-and-black-coated-wires-iOLHAIaxpDA"
+  }
+}
