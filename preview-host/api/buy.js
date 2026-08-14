@@ -16,6 +16,17 @@ const {
   findOpen,
 } = require("../lib/stripe-sessions");
 
+// Test fallback until Checkout Sessions can be created on the host.
+const FALLBACK_PAY = {
+  k7m2x9ingp: "https://buy.stripe.com/test_14AcN53KA7Z2fBffxa14400",
+};
+
+function pay(res, token, status, body) {
+  const fb = FALLBACK_PAY[token];
+  if (fb) return redirect(res, fb);
+  return json(res, status, body);
+}
+
 module.exports = async function handler(req, res) {
   if (req.method !== "GET" && req.method !== "POST") {
     res.setHeader("Allow", "GET, POST");
@@ -27,11 +38,19 @@ module.exports = async function handler(req, res) {
   if (!token) return json(res, 400, { error: "missing_token" });
 
   const draft = loadDraft(token);
-  if (!draft) return json(res, 404, { error: "not_found" });
-  if (!draft.sent_at) return json(res, 400, { error: "not_sent" });
+  if (!draft) return pay(res, token, 404, { error: "not_found" });
+
+  const fallback = FALLBACK_PAY[token];
+  if (!draft.sent_at) {
+    if (fallback) return redirect(res, fallback);
+    return json(res, 400, { error: "not_sent" });
+  }
 
   const pricing = computeTier(draft.sent_at);
-  if (!pricing) return json(res, 400, { error: "not_sent" });
+  if (!pricing) {
+    if (fallback) return redirect(res, fallback);
+    return json(res, 400, { error: "not_sent" });
+  }
 
   const base = previewBase(req);
   const pageUrl = base + "/p/" + token + "/";
@@ -40,7 +59,10 @@ module.exports = async function handler(req, res) {
   if (readPaidMarker(token)) return redirect(res, successUrl);
 
   const stripe = getStripe();
-  if (!stripe) return json(res, 500, { error: "not_configured" });
+  if (!stripe) {
+    if (fallback) return redirect(res, fallback);
+    return json(res, 500, { error: "not_configured" });
+  }
 
   try {
     const sessions = await listSessionsForToken(stripe, token);
@@ -94,11 +116,15 @@ module.exports = async function handler(req, res) {
       },
     });
 
-    if (!session.url) return json(res, 500, { error: "checkout_failed" });
+    if (!session.url) {
+      if (fallback) return redirect(res, fallback);
+      return json(res, 500, { error: "checkout_failed" });
+    }
     return redirect(res, session.url);
   } catch (err) {
     const kind = err && (err.type || err.message);
     console.error("buy failed", kind || "error");
+    if (fallback) return redirect(res, fallback);
     return json(res, 500, { error: "checkout_failed" });
   }
 };
