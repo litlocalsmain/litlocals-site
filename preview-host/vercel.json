@@ -1,0 +1,29 @@
+{
+  "redirects": [
+    {
+      "source": "/p/:token",
+      "destination": "/p/:token/",
+      "permanent": false
+    }
+  ],
+  "headers": [
+    {
+      "source": "/p/(.*)",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+      ]
+    },
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" },
+        { "key": "Cache-Control", "value": "no-store" }
+      ]
+    }
+  ],
+  "functions": {
+    "api/buy.js": { "includeFiles": "drafts/**" },
+    "api/draft.js": { "includeFiles": "drafts/**" },
+    "api/stripe/webhook.js": { "includeFiles": "drafts/**" }
+  }
+}

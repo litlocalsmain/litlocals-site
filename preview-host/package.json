@@ -1,0 +1,8 @@
+{
+  "name": "litlocals-preview-host",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Lit Locals sales preview host. Drafts at /p/{token}/. Not litlocals.com.",
+  "engines": { "node": ">=18" },
+  "dependencies": { "stripe": "^18.4.0" }
+}
