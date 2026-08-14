@@ -7,7 +7,7 @@ One layout engine. Six trade packs. Photo fallback. One Python builder.
 Magical but dumb. No CMS. No customer accounts. No email. No deploy.
 Company: Lit Locals only. Not AISMB Agency. Not a ChatGPT install.
 
-v1.1 adds scroll reveal, service cards with trade icons, pack gold-family accents, and a desktop split hero. Price and Henry-sends rules are unchanged.
+v1.1 adds scroll reveal, service cards with trade icons, pack gold-family accents, and a desktop split hero. Sales chrome is a gold preview bar with Buy now, plus a Lit Locals overlay that appears when they hit the bottom. Not a shop section. Price and Henry-sends rules are unchanged.
 
 ## How to run
 
@@ -32,6 +32,10 @@ Never generate a fake storefront with their business name on the sign. Never inv
 $2,500 regular. $1,500 if they buy within 48 hours after Henry sends this draft.
 The builder does not start the 48-hour clock. Placeholder in the bar: 48 hours after we send this.
 Henry starts the clock when he sends. Henry takes payment.
+
+Preview host: sales URLs live in /workspace/litlocals/preview-host/.
+The factory still does not deploy and does not start the 48-hour clock.
+Henry stamps sent_at on the draft JSON when he sends; preview-host reads that.
 
 This factory does not contact anyone and does not send email and does not deploy.
 
