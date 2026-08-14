@@ -83,10 +83,17 @@ a:hover { color: var(--focus); }
 }
 
 
-.preview-bar {
+
+.preview-chrome {
   position: sticky;
   top: 0;
   z-index: 40;
+  background: var(--bg);
+}
+.preview-bar {
+  position: relative;
+  top: auto;
+  z-index: auto;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -95,7 +102,7 @@ a:hover { color: var(--focus); }
   background: #c5a059;
   color: #1c1916;
   padding: 1.05rem 1.25rem;
-  border-bottom: 2px solid #1c1916;
+  border-bottom: 0;
 }
 .preview-bar-copy {
   max-width: 34rem;
@@ -160,17 +167,30 @@ a:hover { color: var(--focus); }
   text-transform: uppercase;
 }
 .buy-pop-title {
-  margin: 0 0 0.45rem;
+  margin: 0 0 0.4rem;
   font-family: var(--serif);
-  font-size: 1.35rem;
+  font-size: 1.28rem;
   font-weight: 600;
   line-height: 1.15;
 }
 .buy-pop p {
-  margin: 0 0 0.9rem;
+  margin: 0 0 0.7rem;
   color: #efe8d9;
-  font-size: 0.98rem;
+  font-size: 0.95rem;
   line-height: 1.4;
+}
+.buy-pop-guarantee {
+  margin: 0 0 0.7rem;
+  padding: 0.55rem 0.65rem;
+  background: #c5a059;
+  color: #1c1916;
+  font-weight: 800;
+  font-size: 0.95rem;
+  line-height: 1.3;
+}
+.buy-pop-help {
+  margin: 0 0 0.85rem;
+  font-size: 0.9rem;
 }
 .buy-pop .btn {
   width: 100%;
@@ -181,6 +201,17 @@ a:hover { color: var(--focus); }
 .buy-pop .btn:hover {
   background: #b8923e;
   color: #1c1916;
+}
+.buy-pop .btn-ask {
+  margin-top: 0.5rem;
+  background: transparent;
+  color: #f7f3ea;
+  border: 1.5px solid #efe8d9;
+}
+.buy-pop .btn-ask:hover {
+  background: #2a2622;
+  color: #fff;
+  border-color: #fff;
 }
 .buy-pop-x {
   position: absolute;
@@ -200,15 +231,11 @@ a:hover { color: var(--focus); }
 }
 
 .site-header {
-  position: sticky;
-  top: var(--bar-h);
-  z-index: 20;
-@media (max-width: 719px) {
-  .site-header { position: relative; top: auto; }
-}
-
-  background: rgba(247, 243, 234, 0.94);
-  backdrop-filter: blur(10px);
+  position: relative;
+  top: auto;
+  z-index: 1;
+  background: var(--bg);
+  backdrop-filter: none;
   border-bottom: 1px solid var(--line);
 }
 

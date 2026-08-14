@@ -22,6 +22,7 @@ import sys
 import urllib.error
 import urllib.request
 from html import escape
+from urllib.parse import quote
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
@@ -390,6 +391,27 @@ def validate_prospect(p: dict) -> None:
         die(f"vertical must be one of: {', '.join(VERTICALS)}")
 
 
+
+def ask_href(prospect: dict) -> str:
+    name = str(prospect.get("name") or "this shop")
+    city = str(prospect.get("city") or "").strip()
+    preview = str(prospect.get("preview_url") or "").strip()
+    subject = f"Question about {name} draft"
+    lines = [f"Shop: {name}"]
+    if city:
+        lines.append(f"City: {city}")
+    lines.append(f"Preview: {preview}" if preview else "Preview: (the page I opened)")
+    lines.append("")
+    lines.append("My question:")
+    lines.append("")
+    return (
+        "mailto:hello@litlocals.com?subject="
+        + quote(subject)
+        + "&body="
+        + quote("\n".join(lines))
+    )
+
+
 def copy_mark(assets: Path) -> None:
     src = PRODUCT_MARK if PRODUCT_MARK.exists() else LOCAL_MARK
     if not src.exists():
@@ -427,6 +449,7 @@ def build(prospect_path: Path) -> Path:
         "headline": escape(trade_headline(pack, prospect)),
         "lede": escape(fill_words(pack.get("lede_template") or "", prospect)),
         "buy_href": escape(buy_href, quote=True),
+        "ask_href": escape(ask_href(prospect), quote=True),
         "hero_block": hero_block(hero),
         "facts_rows": facts_rows(prospect),
         "reviews_block": reviews_block(prospect),
