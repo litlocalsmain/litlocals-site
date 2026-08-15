@@ -161,7 +161,7 @@ a:hover { color: var(--accent); }
 }
 .poster-lede {
   margin: 0 0 1.6rem;
-  max-width: 28rem;
+  max-width: 34rem;
   color: rgba(244, 242, 238, 0.78);
   font-size: 1.05rem;
 }
@@ -196,7 +196,6 @@ a:hover { color: var(--accent); }
 }
 .intro h2 {
   font-size: clamp(1.7rem, 5vw, 2.6rem);
-  text-transform: uppercase;
 }
 .intro p, .work-copy, .samples-note, .close-copy {
   margin: 0; color: var(--mute); max-width: 34rem; font-size: 1.05rem;
@@ -217,13 +216,22 @@ a:hover { color: var(--accent); }
   margin-top: 1.6rem;
 }
 .compare-card, .sample-card { margin: 0; }
-.compare-frame, .sample-frame {
+.compare-frame {
+  background: #141618;
+  border: 1px solid var(--line);
+  overflow: hidden;
+  aspect-ratio: 2 / 5;
+}
+.compare-frame img {
+  width: 100%; height: 100%; object-fit: cover; object-position: top center;
+}
+.sample-frame {
   background: #141618;
   border: 1px solid var(--line);
   overflow: hidden;
   aspect-ratio: 4 / 5;
 }
-.compare-frame img, .sample-frame img {
+.sample-frame img {
   width: 100%; height: 100%; object-fit: cover; object-position: top center;
 }
 .compare-card figcaption, .sample-card figcaption {
@@ -362,7 +370,7 @@ a:hover { color: var(--accent); }
     font-size: 0.78rem; font-weight: 600;
     letter-spacing: 0.12em; text-transform: uppercase;
   }
-  .poster-copy { padding: 7rem var(--pad) 3.4rem; max-width: 48rem; }
+  .poster-copy { padding: 7rem var(--pad) 3.4rem; max-width: 52rem; }
   .hero-caption { top: 5.6rem; right: 1.5rem; }
 
   .intro {
@@ -393,7 +401,7 @@ a:hover { color: var(--accent); }
 
 @media (min-width: 1100px) {
   :root { --pad: 4.5rem; }
-  .poster-copy { max-width: 52rem; }
+  .poster-copy { max-width: 56rem; }
   .intro { gap: 4.5rem; }
   .sample-card { flex-basis: 20rem; }
 }
