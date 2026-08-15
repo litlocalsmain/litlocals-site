@@ -4,26 +4,27 @@
   "accent": "#8a6230",
   "eyebrow": "Local heating and cooling",
   "headline_template": "Keeps the house from cooking.",
+  "poster_line": "AC out in {city}. We come.",
   "lede_template": "AC, heat, and tune-ups in {city}.",
   "services": [
     {
       "name": "AC repair",
-      "what": "The house won’t cool, the unit runs and blows warm, or it shut off on a hot day.",
+      "what": "The house won\u2019t cool, the unit runs and blows warm, or it shut off on a hot day.",
       "benefit": "Cool air back on before you sleep in a hot house."
     },
     {
       "name": "Furnace and heat",
-      "what": "No heat, cold rooms, or a furnace that clicks and doesn’t fire.",
+      "what": "No heat, cold rooms, or a furnace that clicks and doesn\u2019t fire.",
       "benefit": "The house warm again, and a clear answer if a part is done."
     },
     {
       "name": "Tune-ups before summer and winter",
-      "what": "A check before the first heat wave or cold snap — filters, coils, safeties.",
+      "what": "A check before the first heat wave or cold snap \u2014 filters, coils, safeties.",
       "benefit": "Catch a weak unit before it dies on the worst day of the year."
     },
     {
       "name": "Thermostats",
-      "what": "A thermostat that lies, won’t hold a setting, or won’t talk to the system.",
+      "what": "A thermostat that lies, won\u2019t hold a setting, or won\u2019t talk to the system.",
       "benefit": "The system runs when you ask, not when it feels like it."
     },
     {
@@ -33,7 +34,7 @@
     },
     {
       "name": "New unit installs",
-      "what": "A system that’s too far gone to keep patching.",
+      "what": "A system that\u2019s too far gone to keep patching.",
       "benefit": "A straight recommendation, not a scare into the most expensive unit."
     }
   ],
@@ -54,17 +55,17 @@
     },
     {
       "title": "They look, then they talk",
-      "body": "A tech should say what failed and the options — repair, part, or a new unit — before they start."
+      "body": "A tech should say what failed and the options \u2014 repair, part, or a new unit \u2014 before they start."
     }
   ],
   "faqs": [
     {
       "q": "How do I know I need an HVAC tech?",
-      "a": "No cool air, no heat, ice on the lines, a burning smell, or a unit that short-cycles. If you’re not sure, call and describe it."
+      "a": "No cool air, no heat, ice on the lines, a burning smell, or a unit that short-cycles. If you\u2019re not sure, call and describe it."
     },
     {
       "q": "What should I do while I wait?",
-      "a": "Check the thermostat batteries and the breaker. Change a filthy filter if you can reach it. Don’t keep resetting a unit that trips."
+      "a": "Check the thermostat batteries and the breaker. Change a filthy filter if you can reach it. Don\u2019t keep resetting a unit that trips."
     },
     {
       "q": "Do they come to {city}?",
@@ -72,7 +73,7 @@
     },
     {
       "q": "How do I reach them?",
-      "a": "Call {phone}. That’s the shop number on this page."
+      "a": "Call {phone}. That\u2019s the shop number on this page."
     }
   ]
 }

@@ -4,17 +4,18 @@
   "accent": "#8a7350",
   "eyebrow": "Local cleaning",
   "headline_template": "Leaves the place ready for company.",
+  "poster_line": "House in {city}. We come.",
   "lede_template": "Houses and small shops in {city}.",
   "services": [
     {
       "name": "House cleaning",
-      "what": "The regular clean — floors, baths, kitchen surfaces, dust.",
+      "what": "The regular clean \u2014 floors, baths, kitchen surfaces, dust.",
       "benefit": "The house stays livable without you spending the weekend on it."
     },
     {
       "name": "Move-out cleans",
       "what": "Empty-house clean so a landlord or buyer can walk it.",
-      "benefit": "A better shot at the deposit or a listing that doesn’t smell like the last tenant."
+      "benefit": "A better shot at the deposit or a listing that doesn\u2019t smell like the last tenant."
     },
     {
       "name": "Kitchens and baths",
@@ -28,8 +29,8 @@
     },
     {
       "name": "Recurring visits",
-      "what": "A set day so the same mess doesn’t pile up for a month.",
-      "benefit": "You stop negotiating “when can you come” every time."
+      "what": "A set day so the same mess doesn\u2019t pile up for a month.",
+      "benefit": "You stop negotiating \u201cwhen can you come\u201d every time."
     },
     {
       "name": "One-time deep cleans",
@@ -46,11 +47,11 @@
   "process": [
     {
       "title": "You call the shop",
-      "body": "The number on this page rings them. Say if it’s a one-time clean, a move-out, or a regular visit."
+      "body": "The number on this page rings them. Say if it\u2019s a one-time clean, a move-out, or a regular visit."
     },
     {
       "title": "They tell you if they can take it",
-      "body": "Ask if they cover your street, what’s included, and whether you need to be home."
+      "body": "Ask if they cover your street, what\u2019s included, and whether you need to be home."
     },
     {
       "title": "They look, then they talk",
@@ -60,7 +61,7 @@
   "faqs": [
     {
       "q": "How do I know I need a cleaning crew?",
-      "a": "A move-out that has to pass inspection, a kitchen you can’t get back, or a schedule that doesn’t leave a Saturday for it."
+      "a": "A move-out that has to pass inspection, a kitchen you can\u2019t get back, or a schedule that doesn\u2019t leave a Saturday for it."
     },
     {
       "q": "What should I do while I wait?",
@@ -72,7 +73,7 @@
     },
     {
       "q": "How do I reach them?",
-      "a": "Call {phone}. That’s the shop number on this page."
+      "a": "Call {phone}. That\u2019s the shop number on this page."
     }
   ]
 }

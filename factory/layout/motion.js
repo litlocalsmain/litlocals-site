@@ -64,21 +64,13 @@
   io.observe(foot);
 })();
 
-
 (function () {
   var chrome = document.querySelector(".preview-chrome");
-  var mq = window.matchMedia("(max-width: 719px)");
   if (!chrome) return;
   function sync() {
-    if (!mq.matches) {
-      chrome.classList.remove("is-compact");
-      return;
-    }
-    chrome.classList.toggle("is-compact", window.scrollY > 20);
+    chrome.classList.toggle("is-scrolled", window.scrollY > 16);
   }
   window.addEventListener("scroll", sync, { passive: true });
-  if (mq.addEventListener) mq.addEventListener("change", sync);
-  else if (mq.addListener) mq.addListener(sync);
   sync();
 })();
 

@@ -7,12 +7,12 @@
   <meta name="description" content="Draft site for {{name}} in {{city}}. Not live yet.">
   <meta name="robots" content="noindex, nofollow">
   <meta name="googlebot" content="noindex, nofollow">
-  <meta name="theme-color" content="#f7f3ea">
+  <meta name="theme-color" content="#f3eee4">
   <meta name="color-scheme" content="light">
   <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -20,17 +20,12 @@
   <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 
   <div class="preview-chrome">
-  <div class="preview-bar" role="status">
-    <div class="preview-bar-copy">
-      <strong class="bar-full">Draft for {{name}}. Give it a test spin below.</strong>
-      <span class="bar-full">Tap Call. Scroll it. If it feels like your shop, lock it in for $1,500 — $750 now.</span>
+    <div class="preview-bar shop-tag" role="status">
       <strong class="bar-slim">Draft · $1,500 — $750 now</strong>
+      <a class="btn btn-bar" href="{{buy_href}}">Buy</a>
     </div>
-    <a class="btn btn-bar" href="{{buy_href}}">Buy now</a>
-  </div>
 
-  <header class="site-header">
-    <div class="wrap header-inner">
+    <header class="site-header">
       <a class="brand" href="#top" aria-label="{{name}}, top">
         <img class="brand-mark" src="assets/mark.svg" alt="" width="72" height="48">
         <span class="brand-name">{{name}}</span>
@@ -39,79 +34,42 @@
         <span class="nav-toggle-bars" aria-hidden="true"></span>
       </button>
       <nav class="nav" id="site-nav" aria-label="On this page">
-        <a href="#services">Services</a>
-        <a href="#area">Area</a>
-        <a href="#expect">What to expect</a>
+        <a href="#jobs">Jobs</a>
+        <a href="#hours">Hours</a>
         <a href="#faq">FAQ</a>
         <a href="#call">Call</a>
       </nav>
-      <a class="btn btn-gold header-cta" href="{{phone_tel}}"><span class="cta-long">Call {{phone}}</span><span class="cta-short">Call</span></a>
-    </div>
-  </header>
-  <div class="nav-backdrop" id="nav-backdrop" hidden></div>
+    </header>
+    <div class="nav-backdrop" id="nav-backdrop" hidden></div>
   </div>
 
   <main id="main">
-    <section class="hero reveal" id="top" aria-labelledby="shop-name">
+    <section class="poster" id="top" aria-labelledby="shop-name">
       {{hero_block}}
-      <div class="wrap hero-inner">
-        <p class="eyebrow">{{eyebrow}}</p>
+      <div class="poster-copy">
         <h1 id="shop-name">{{name}}</h1>
-        <p class="headline">{{headline}}</p>
-        <p class="lede">{{lede}}</p>
-        <div class="hero-actions">
-          <a class="btn btn-gold" href="{{phone_tel}}" id="call">Call {{phone}}</a>
-        </div>
+        <p class="poster-line">{{poster_line}}</p>
+        <a class="btn btn-call" id="call" href="{{phone_tel}}">Call {{phone}}</a>
       </div>
     </section>
 
-    <section class="section band-warm reveal" id="hours" aria-labelledby="facts-title">
-      <div class="wrap">
-        <h2 id="facts-title">Hours, area, city</h2>
-        <dl class="facts">
-          {{facts_rows}}
-        </dl>
-        <p class="tap-note"><a href="{{phone_tel}}">Tap to call {{phone}}</a></p>
-      </div>
-    </section>
+    {{jobs_block}}
 
     {{reviews_block}}
 
-    <section class="section reveal" id="services" aria-labelledby="services-title">
-      <div class="wrap">
-        <h2 id="services-title">Services</h2>
-        <ul class="svc-list">
-          {{services_items}}
-        </ul>
-      </div>
-    </section>
-
-    {{service_details}}
-
-    {{area_block}}
-
-    {{process_block}}
+    {{matchbook_block}}
 
     {{faq_block}}
 
     {{listings_block}}
 
-    {{call_band}}
-
   </main>
 
   <footer class="site-footer reveal">
-    <div class="wrap">
-      <p>Draft by Lit Locals. Not their live site yet.</p>
-      {{unsplash_credit}}
-      <p class="footer-note">Lit Locals · local website upgrades · not a directory.</p>
-    </div>
+    <p>Draft by Lit Locals. Not their live site yet.</p>
+    {{unsplash_credit}}
+    <p class="footer-note">Lit Locals · local website upgrades · not a directory.</p>
   </footer>
-
-  <div class="call-dock">
-    <a class="btn btn-gold btn-lg" href="{{phone_tel}}">Call {{phone}}</a>
-  </div>
-
 
   <div class="buy-pop" id="buy-pop" hidden>
     <button class="buy-pop-x" type="button" aria-label="Close">×</button>

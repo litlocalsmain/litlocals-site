@@ -36,7 +36,7 @@ UA = "LitLocalsPreviewFactory/1.0 (+https://litlocals.com; draft builder, not a 
 VERTICALS = ("hvac", "plumbing", "roofing", "landscaping", "cleaning", "electrical")
 EXPIRY_PLACEHOLDER = "48 hours after we send this"
 STARTER_CAPTION = "Starter photo — not their crew."
-MAX_REVIEWS = 3
+MAX_REVIEWS = 2
 DOWNLOAD_TIMEOUT = 30
 
 
@@ -115,6 +115,21 @@ def load_pack(vertical: str) -> dict:
 
 def fill_words(template: str, prospect: dict) -> str:
     return (template or "").replace("{name}", prospect["name"]).replace("{city}", prospect["city"])
+
+
+def city_short(prospect: dict) -> str:
+    city = str(prospect.get("city") or "").strip()
+    return city.split(",")[0].strip() or city
+
+
+def poster_line(pack: dict, prospect: dict) -> str:
+    raw = pack.get("poster_line") or pack.get("headline_template") or ""
+    return (
+        str(raw)
+        .replace("{city}", city_short(prospect))
+        .replace("{name}", str(prospect.get("name") or "").strip())
+        .replace("{phone}", str(prospect.get("phone") or "").strip())
+    )
 
 
 def trade_headline(pack: dict, prospect: dict) -> str:
@@ -276,7 +291,7 @@ def facts_rows(prospect: dict) -> str:
 
 
 def reviews_block(prospect: dict) -> str:
-    """Only quotes present in JSON. Never invent."""
+    """Only quotes present in JSON. Never invent. Max two."""
     raw = prospect.get("reviews")
     if not raw or not isinstance(raw, list):
         return ""
@@ -287,26 +302,15 @@ def reviews_block(prospect: dict) -> str:
         quote = (entry.get("quote") or "").strip()
         if not quote:
             continue
-        stars = entry.get("stars")
-        star_html = ""
-        if isinstance(stars, int) and 1 <= stars <= 5:
-            star_html = f'\n              <span class="stars" aria-label="{stars} out of 5">{"★" * stars}{"☆" * (5 - stars)}</span>'
-        items.append(
-            "          <li>\n"
-            f"            <blockquote>{escape(quote)}</blockquote>{star_html}\n"
-            "          </li>"
-        )
+        items.append(f'      <p class="said">“{escape(quote)}”</p>')
         if len(items) >= MAX_REVIEWS:
             break
     if not items:
         return ""
     inner = "\n".join(items)
     return (
-        '    <section class="section section-alt reveal" id="reviews" aria-labelledby="reviews-title">\n'
-        '      <div class="wrap">\n'
-        '        <h2 id="reviews-title">What people wrote</h2>\n'
-        f'        <ul class="quotes">\n{inner}\n        </ul>\n'
-        "      </div>\n"
+        '    <section class="reviews reveal">\n'
+        f"{inner}\n"
         "    </section>\n"
     )
 
@@ -327,7 +331,7 @@ def listings_block(prospect: dict) -> str:
         return ""
     inner = "\n".join(links)
     return (
-        '    <section class="section band-warm reveal" id="listings" aria-labelledby="listings-title">\n'
+        '    <section class="section listings reveal" id="listings" aria-labelledby="listings-title">\n'
         '      <div class="wrap">\n'
         '        <h2 id="listings-title">Find them</h2>\n'
         f'        <ul class="listings">\n{inner}\n        </ul>\n'
@@ -357,6 +361,61 @@ def services_items(pack: dict) -> str:
             f"<span>{escape(label)}</span></a></li>"
         )
     return "\n".join(items)
+
+
+
+def jobs_block(pack: dict) -> str:
+    """First three services only. No icons. No svc-* links."""
+    items = []
+    for svc in pack.get("services") or []:
+        if not isinstance(svc, dict):
+            continue
+        name = str(svc.get("name") or "").strip()
+        what = str(svc.get("what") or "").strip()
+        if not name:
+            continue
+        items.append(
+            "        <li>\n"
+            f"          <h3>{escape(name)}</h3>\n"
+            f"          <p>{escape(what)}</p>\n"
+            "        </li>"
+        )
+        if len(items) >= 3:
+            break
+    if not items:
+        return ""
+    inner = "\n".join(items)
+    return (
+        '    <section class="jobs section reveal" id="jobs">\n'
+        "      <h2>The work</h2>\n"
+        f"      <ul>\n{inner}\n      </ul>\n"
+        "    </section>\n"
+    )
+
+
+def matchbook_block(prospect: dict) -> str:
+    """Name, city, hours only if present, phone as tel. No invented hours."""
+    name = str(prospect.get("name") or "").strip()
+    city = str(prospect.get("city") or "").strip()
+    hours = str(prospect.get("hours") or "").strip()
+    phone = str(prospect.get("phone") or "").strip()
+    parts = []
+    if name:
+        parts.append(f'      <p class="shop-name">{escape(name)}</p>')
+    if city:
+        parts.append(f'      <p class="mb-city">{escape(city)}</p>')
+    if hours:
+        parts.append(f'      <p class="mb-hours">{escape(hours)}</p>')
+    if phone:
+        tel = escape(tel_href(phone), quote=True)
+        parts.append(f'      <p class="mb-phone"><a href="{tel}">{escape(phone)}</a></p>')
+    if not parts:
+        return ""
+    return (
+        '    <section class="matchbook reveal" id="hours">\n'
+        + "\n".join(parts)
+        + "\n    </section>\n"
+    )
 
 
 def service_details(pack: dict, prospect: dict) -> str:
@@ -450,20 +509,20 @@ def faq_block(pack: dict, prospect: dict) -> str:
         if not q or not a:
             continue
         items.append(
-            "          <div class=\"faq\">\n"
-            f"            <h3>{escape(q)}</h3>\n"
-            f"            <p>{escape(a)}</p>\n"
-            "          </div>"
+            "      <div class=\"faq\">\n"
+            f"        <h3>{escape(q)}</h3>\n"
+            f"        <p>{escape(a)}</p>\n"
+            "      </div>"
         )
+        if len(items) >= 3:
+            break
     if not items:
         return ""
     return (
-        '    <section class="section reveal" id="faq" aria-labelledby="faq-title">\n'
-        '      <div class="wrap">\n'
-        '        <h2 id="faq-title">Before you call</h2>\n'
-        f'        <div class="faq-list">\n' + "\n".join(items) + "\n        </div>\n"
-        "      </div>\n"
-        "    </section>\n"
+        '    <section class="faq-list reveal" id="faq">\n'
+        "      <h2>Before you call</h2>\n"
+        + "\n".join(items)
+        + "\n    </section>\n"
     )
 
 
@@ -600,21 +659,15 @@ def build(prospect_path: Path) -> Path:
         "phone": escape(phone),
         "phone_tel": escape(tel_href(phone), quote=True),
         "trade": escape(pack["id"]),
-        "eyebrow": escape(pack.get("eyebrow") or pack.get("label") or ""),
-        "headline": escape(trade_headline(pack, prospect)),
-        "lede": escape(fill_words(pack.get("lede_template") or "", prospect)),
+        "poster_line": escape(poster_line(pack, prospect)),
         "buy_href": escape(buy_href, quote=True),
         "ask_href": escape(ask_href(prospect), quote=True),
         "hero_block": hero_block(hero),
-        "facts_rows": facts_rows(prospect),
+        "jobs_block": jobs_block(pack),
         "reviews_block": reviews_block(prospect),
-        "services_items": services_items(pack),
-        "listings_block": listings_block(prospect),
-        "service_details": service_details(pack, prospect),
-        "process_block": process_block(pack, prospect),
+        "matchbook_block": matchbook_block(prospect),
         "faq_block": faq_block(pack, prospect),
-        "area_block": area_block(prospect),
-        "call_band": call_band(prospect),
+        "listings_block": listings_block(prospect),
         "unsplash_credit": unsplash_credit(hero),
     }
 

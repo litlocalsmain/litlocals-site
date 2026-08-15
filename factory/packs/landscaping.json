@@ -4,11 +4,12 @@
   "accent": "#6e6a2a",
   "eyebrow": "Local yard work",
   "headline_template": "Keeps the yard looking like someone lives here.",
+  "poster_line": "Yard in {city}. We come.",
   "lede_template": "Mowing, cleanup, and the jobs that pile up in {city}.",
   "services": [
     {
       "name": "Mowing and edging",
-      "what": "Weekly or biweekly cuts so the yard doesn’t get away from you.",
+      "what": "Weekly or biweekly cuts so the yard doesn\u2019t get away from you.",
       "benefit": "The house looks kept when someone drives by or a tenant moves in."
     },
     {
@@ -18,12 +19,12 @@
     },
     {
       "name": "Trees and shrubs",
-      "what": "Overgrown hedges, a tree on the lines, or a plant that’s dying in place.",
+      "what": "Overgrown hedges, a tree on the lines, or a plant that\u2019s dying in place.",
       "benefit": "Shape it or take it out before it hits the house or the sidewalk."
     },
     {
       "name": "Irrigation",
-      "what": "Heads that miss, a zone that won’t shut off, or a timer nobody understands.",
+      "what": "Heads that miss, a zone that won\u2019t shut off, or a timer nobody understands.",
       "benefit": "Water the plants, not the driveway, and stop the runoff ticket."
     },
     {
@@ -33,7 +34,7 @@
     },
     {
       "name": "Seasonal work",
-      "what": "The big jobs that show up with the season — cutbacks, leaf drops, pre-summer prep.",
+      "what": "The big jobs that show up with the season \u2014 cutbacks, leaf drops, pre-summer prep.",
       "benefit": "A plan for the yard instead of reacting every time it gets ugly."
     }
   ],
@@ -54,13 +55,13 @@
     },
     {
       "title": "They look, then they talk",
-      "body": "Someone should walk the yard and say what’s included before the first mow or cut."
+      "body": "Someone should walk the yard and say what\u2019s included before the first mow or cut."
     }
   ],
   "faqs": [
     {
       "q": "How do I know I need a landscaper?",
-      "a": "Grass you can’t keep up with, a yard that’s gone after vacation, or irrigation that floods one bed and starves another."
+      "a": "Grass you can\u2019t keep up with, a yard that\u2019s gone after vacation, or irrigation that floods one bed and starves another."
     },
     {
       "q": "What should I do while I wait?",
@@ -72,7 +73,7 @@
     },
     {
       "q": "How do I reach them?",
-      "a": "Call {phone}. That’s the shop number on this page."
+      "a": "Call {phone}. That\u2019s the shop number on this page."
     }
   ]
 }

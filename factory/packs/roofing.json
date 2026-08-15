@@ -4,6 +4,7 @@
   "accent": "#7a4e28",
   "eyebrow": "Local roofing",
   "headline_template": "On the roof before the next rain.",
+  "poster_line": "Leak in {city}. We come.",
   "lede_template": "Leaks, shingles, and a look before the weather turns in {city}.",
   "services": [
     {
@@ -19,7 +20,7 @@
     {
       "name": "Roof inspections",
       "what": "A look at the field, flashings, and vents before you buy, sell, or file a claim.",
-      "benefit": "You hear what’s wrong before the next storm writes the report."
+      "benefit": "You hear what\u2019s wrong before the next storm writes the report."
     },
     {
       "name": "Flat roofs",
@@ -33,8 +34,8 @@
     },
     {
       "name": "Storm damage look-over",
-      "what": "After wind or hail — lifted shingles, bruised mats, or a tarp that won’t last.",
-      "benefit": "A clear list of what’s damaged, not a guess from the street."
+      "what": "After wind or hail \u2014 lifted shingles, bruised mats, or a tarp that won\u2019t last.",
+      "benefit": "A clear list of what\u2019s damaged, not a guess from the street."
     }
   ],
   "unsplash": {
@@ -60,11 +61,11 @@
   "faqs": [
     {
       "q": "How do I know I need a roofer?",
-      "a": "Stains on the ceiling, missing shingles, granules in the gutters, or a leak after rain. If you’re not sure, call and describe it."
+      "a": "Stains on the ceiling, missing shingles, granules in the gutters, or a leak after rain. If you\u2019re not sure, call and describe it."
     },
     {
       "q": "What should I do while I wait?",
-      "a": "Put a bucket under an active drip. Don’t walk a wet roof. If a leak is over a light, kill that breaker."
+      "a": "Put a bucket under an active drip. Don\u2019t walk a wet roof. If a leak is over a light, kill that breaker."
     },
     {
       "q": "Do they come to {city}?",
@@ -72,7 +73,7 @@
     },
     {
       "q": "How do I reach them?",
-      "a": "Call {phone}. That’s the shop number on this page."
+      "a": "Call {phone}. That\u2019s the shop number on this page."
     }
   ]
 }

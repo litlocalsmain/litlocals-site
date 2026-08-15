@@ -3,22 +3,23 @@
   "label": "Electrical",
   "accent": "#b8923e",
   "eyebrow": "Local electrical",
-  "headline_template": "Shows up when the lights don’t.",
+  "headline_template": "Shows up when the lights don\u2019t.",
+  "poster_line": "Lights out in {city}. We come.",
   "lede_template": "Panels, outlets, and the stuff that sparks in {city}.",
   "services": [
     {
       "name": "Outlets and switches",
-      "what": "Dead outlets, a switch that doesn’t do anything, or a plug that’s loose and warm.",
+      "what": "Dead outlets, a switch that doesn\u2019t do anything, or a plug that\u2019s loose and warm.",
       "benefit": "The room works again, and you stop using a power strip as a permanent fix."
     },
     {
       "name": "Panel work",
-      "what": "A full panel, a breaker that won’t hold, or a box that’s out of space.",
+      "what": "A full panel, a breaker that won\u2019t hold, or a box that\u2019s out of space.",
       "benefit": "The heart of the house can take the load without tripping all afternoon."
     },
     {
       "name": "Lighting",
-      "what": "A room that’s too dark, a fixture that’s dead, or cans that need to go in.",
+      "what": "A room that\u2019s too dark, a fixture that\u2019s dead, or cans that need to go in.",
       "benefit": "You can see the workbench, the kitchen, or the front step at night."
     },
     {
@@ -28,7 +29,7 @@
     },
     {
       "name": "Troubleshooting",
-      "what": "Something electrical is wrong and you don’t know which box or wire.",
+      "what": "Something electrical is wrong and you don\u2019t know which box or wire.",
       "benefit": "A diagnosis before you replace the wrong part."
     },
     {
@@ -50,7 +51,7 @@
     },
     {
       "title": "They tell you if they can take it",
-      "body": "Ask if they cover your street and whether it’s a same-day look or a scheduled install."
+      "body": "Ask if they cover your street and whether it\u2019s a same-day look or a scheduled install."
     },
     {
       "title": "They look, then they talk",
@@ -64,7 +65,7 @@
     },
     {
       "q": "What should I do while I wait?",
-      "a": "If something is sparking or hot, kill that breaker. Don’t keep resetting a breaker that trips twice."
+      "a": "If something is sparking or hot, kill that breaker. Don\u2019t keep resetting a breaker that trips twice."
     },
     {
       "q": "Do they come to {city}?",
@@ -72,7 +73,7 @@
     },
     {
       "q": "How do I reach them?",
-      "a": "Call {phone}. That’s the shop number on this page."
+      "a": "Call {phone}. That\u2019s the shop number on this page."
     }
   ]
 }
