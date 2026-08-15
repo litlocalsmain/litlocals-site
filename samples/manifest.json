@@ -1,0 +1,226 @@
+[
+  {
+    "file": "01-hifi-bar-cocktails.jpg",
+    "label": "HiFi bar & cocktails",
+    "vertical": "Hospitality \u00b7 bar",
+    "category": "other",
+    "name": "MALOOT | HiFi Bar & Cocktails in Vieux-Lille",
+    "id": "91791"
+  },
+  {
+    "file": "02-surella-bar-bistrot.jpg",
+    "label": "Surella bar & bistrot",
+    "vertical": "Restaurant \u00b7 bar",
+    "category": "other",
+    "name": "Surella - Bar, Bistrot, restaurant et Cave \\u00e0 Barsac (Gironde, France)",
+    "id": "88663"
+  },
+  {
+    "file": "03-combo-ostello-restaurant.jpg",
+    "label": "Combo ostello & restaurant",
+    "vertical": "Hospitality \u00b7 restaurant",
+    "category": "other",
+    "name": "Ostello, Bar, Ristorante, Spazio per Eventi, Radio \\u2022 Combo",
+    "id": "93595"
+  },
+  {
+    "file": "04-dash-burger.jpg",
+    "label": "Dash Burger",
+    "vertical": "Restaurant",
+    "category": "other",
+    "name": "Dash Burger",
+    "id": "93149"
+  },
+  {
+    "file": "05-lobb-s-padel-club.jpg",
+    "label": "Lobb's Padel club",
+    "vertical": "Recreation \u00b7 club",
+    "category": "other",
+    "name": "Lobb\\u2019s Padel - Founding Membership Waitlist Open | The Woodlands",
+    "id": "96646"
+  },
+  {
+    "file": "06-wwake-jewelry.jpg",
+    "label": "WWAKE jewelry",
+    "vertical": "Retail \u00b7 jewelry",
+    "category": "ecommerce",
+    "name": "WWAKE | Fine Jewelry Mindfully Made in NYC",
+    "id": "97374"
+  },
+  {
+    "file": "07-primal-pastures.jpg",
+    "label": "Primal Pastures",
+    "vertical": "Retail \u00b7 food",
+    "category": "ecommerce",
+    "name": "The Cleanest Grass Fed Meats in America - Primal Pastures",
+    "id": "98821"
+  },
+  {
+    "file": "08-lf-markey.jpg",
+    "label": "LF Markey",
+    "vertical": "Retail \u00b7 apparel",
+    "category": "ecommerce",
+    "name": "LF Markey",
+    "id": "77905"
+  },
+  {
+    "file": "09-eternal-blue.jpg",
+    "label": "Eternal Blue",
+    "vertical": "Retail \u00b7 care",
+    "category": "ecommerce",
+    "name": "Premium Hair & Scalp Care \\u2013 Eternal Blue Store",
+    "id": "97914"
+  },
+  {
+    "file": "10-dix-hectares.jpg",
+    "label": "Dix Hectares",
+    "vertical": "Retail \u00b7 skincare",
+    "category": "ecommerce",
+    "name": "Dix Hectares - Seasonal Serum and Cream, designed for demanding skin",
+    "id": "81148"
+  },
+  {
+    "file": "11-provider-studio.jpg",
+    "label": "Provider Studio",
+    "vertical": "Hospitality \u00b7 studio",
+    "category": "portfolio",
+    "name": "Provider Studio \\u2014 Brand & Scent Design for Boutique Hotels",
+    "id": "98794"
+  },
+  {
+    "file": "12-otherhalf-studio.jpg",
+    "label": "Otherhalf Studio",
+    "vertical": "Portfolio \u00b7 studio",
+    "category": "portfolio",
+    "name": "Otherhalf Studio",
+    "id": "98702"
+  },
+  {
+    "file": "13-on-display-museum.jpg",
+    "label": "On Display museum",
+    "vertical": "Portfolio \u00b7 culture",
+    "category": "portfolio",
+    "name": "On Display \\u2013 Museum Department",
+    "id": "98372"
+  },
+  {
+    "file": "14-brikken-co.jpg",
+    "label": "Brikken+Co",
+    "vertical": "Portfolio \u00b7 design",
+    "category": "portfolio",
+    "name": "Brikken+Co \\u2014 Strategic Design Studio",
+    "id": "98051"
+  },
+  {
+    "file": "15-the-equator-company.jpg",
+    "label": "The Equator Company",
+    "vertical": "Portfolio \u00b7 brand",
+    "category": "portfolio",
+    "name": "The Equator Company",
+    "id": "98088"
+  },
+  {
+    "file": "16-emergence-magazine.jpg",
+    "label": "Emergence Magazine",
+    "vertical": "Blog \u00b7 magazine",
+    "category": "blog",
+    "name": "Connecting the threads between ecology, culture, and spirituality \\u2013 Emergence Magazine",
+    "id": "92888"
+  },
+  {
+    "file": "17-qp-magazine.jpg",
+    "label": "QP Magazine",
+    "vertical": "Blog \u00b7 magazine",
+    "category": "blog",
+    "name": "QP Magazine",
+    "id": "91618"
+  },
+  {
+    "file": "18-alison-roman.jpg",
+    "label": "Alison Roman",
+    "vertical": "Blog \u00b7 food",
+    "category": "blog",
+    "name": "Alison Roman",
+    "id": "88789"
+  },
+  {
+    "file": "19-ocula.jpg",
+    "label": "Ocula",
+    "vertical": "Blog \u00b7 art",
+    "category": "blog",
+    "name": "Ocula | Discover the Best of Contemporary Art Now",
+    "id": "83809"
+  },
+  {
+    "file": "20-nkora-coffee.jpg",
+    "label": "Nkora coffee",
+    "vertical": "Landing \u00b7 coffee",
+    "category": "landing",
+    "name": "Nkora coffee",
+    "id": "88605"
+  },
+  {
+    "file": "21-aethos-hotels.jpg",
+    "label": "Aethos Hotels",
+    "vertical": "Landing \u00b7 hotels",
+    "category": "landing",
+    "name": "Aethos Hotels",
+    "id": "83997"
+  },
+  {
+    "file": "22-diamond-rose.jpg",
+    "label": "Diamond Rose Sanctuary",
+    "vertical": "Landing \u00b7 wellness",
+    "category": "landing",
+    "name": "Diamond Rose Sanctuary",
+    "id": "95235"
+  },
+  {
+    "file": "23-titan-wealth.jpg",
+    "label": "Titan wealth",
+    "vertical": "Landing \u00b7 professional",
+    "category": "landing",
+    "name": "Titan wealth",
+    "id": "89112"
+  },
+  {
+    "file": "24-foundation-real-estate.jpg",
+    "label": "Foundation real estate",
+    "vertical": "Landing \u00b7 real estate",
+    "category": "landing",
+    "name": "Foundation real estate",
+    "id": "80280"
+  },
+  {
+    "file": "25-hartmann-capital.jpg",
+    "label": "Hartmann Capital",
+    "vertical": "Landing \u00b7 finance",
+    "category": "landing",
+    "name": "Hartmann Capital",
+    "id": "67549"
+  },
+  {
+    "file": "26-storey-architecture.jpg",
+    "label": "Storey Architecture",
+    "vertical": "Professional \u00b7 architecture",
+    "category": "portfolio",
+    "name": "Storey Architecture | Contemporary Residential Design UK",
+    "id": "96873"
+  },
+  {
+    "file": "27-amrit-palace.jpg",
+    "label": "Amrit Palace",
+    "vertical": "Hospitality \u00b7 hotel",
+    "category": "other",
+    "name": "Amrit Palace",
+    "id": "85976"
+  },
+  {
+    "file": "28-oka-furniture.jpg",
+    "label": "OKA furniture",
+    "vertical": "Retail \u00b7 home",
+    "category": "ecommerce",
+    "name": "Luxury Furniture & Accessories - Give Your Home A Tale To Tell | Oka\\u2013 OKA",
+    "id": "96375"
+  }
+]

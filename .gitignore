@@ -1,0 +1,4 @@
+.vercel/
+factory/out/
+**/.env
+**/.env.*

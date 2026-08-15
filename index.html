@@ -3,130 +3,429 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Lit Locals — Your shop looks closed online.</title>
-  <meta name="description" content="We replace a bad or missing website with a fast mobile site that shows the phone, the hours, the reviews, and their Google and Yelp listings when they have them. $2,500. $1,500 if you take the draft in 48 hours. Days, not months.">
+  <title>Lit Locals — Already have a site? That’s the job.</title>
+  <meta name="description" content="Local website upgrades. Already have a site, or don’t — we send a draft. $2,500. $1,500 if you buy the draft within 48 hours. Deposit $750.">
   <link rel="canonical" href="https://litlocals.com/">
-  <meta name="theme-color" content="#f7f3ea">
+  <meta name="theme-color" content="#1e2226">
   <meta name="color-scheme" content="light">
 
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://litlocals.com/">
   <meta property="og:site_name" content="Lit Locals">
-  <meta property="og:title" content="Your shop looks closed online.">
-  <meta property="og:description" content="We replace a bad or missing website with a fast mobile site that shows the phone, the hours, the reviews, and their Google and Yelp listings when they have them. $2,500. $1,500 if you take the draft in 48 hours. Days, not months.">
-  <meta property="og:image" content="https://litlocalsmain.github.io/litlocals-site/assets/mark.svg">
+  <meta property="og:title" content="Already have a site? That’s the job.">
+  <meta property="og:description" content="Local website upgrades. Upgrade or new. We send a draft. $2,500. $1,500 if you buy the draft within 48 hours.">
+  <meta property="og:image" content="https://litlocals.com/assets/mark.svg">
   <meta property="og:locale" content="en_US">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Your shop looks closed online. · Lit Locals">
-  <meta name="twitter:description" content="We replace a bad or missing website with a fast mobile site that shows the phone, the hours, the reviews, and their Google and Yelp listings when they have them. $2,500. $1,500 if you take the draft in 48 hours. Days, not months.">
-  <meta name="twitter:image" content="https://litlocalsmain.github.io/litlocals-site/assets/mark.svg">
+  <meta name="twitter:title" content="Already have a site? That’s the job. · Lit Locals">
+  <meta name="twitter:description" content="Local website upgrades. Upgrade or new. We send a draft. $2,500. $1,500 if you buy the draft within 48 hours.">
 
   <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/mark.svg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Schibsted+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
+  <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 
-  <header class="site-header">
-    <div class="wrap header-inner">
-      <a class="brand" href="#top" aria-label="Lit Locals, home">
-        <img class="brand-mark" src="assets/mark.svg" alt="" width="72" height="48">
-        <span class="brand-name">Lit Locals</span>
-      </a>
-      <nav class="nav" aria-label="Primary">
-        <a href="#offer">What’s included</a>
-        <a href="#how">How it works</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <a class="btn btn-gold header-cta" href="mailto:hello@litlocals.com">Email hello@litlocals.com</a>
-    </div>
+  <header class="site-header" id="site-header">
+    <a class="brand" href="#top" aria-label="Lit Locals, home">
+      <img class="brand-mark" src="assets/mark.svg" alt="" width="72" height="48">
+      <span class="brand-name">Lit Locals</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu">
+      <span class="nav-toggle-bars" aria-hidden="true"></span>
+    </button>
+    <nav class="nav" id="site-nav" aria-label="On this page">
+      <a href="#work">Work</a>
+      <a href="#before">Before &amp; after</a>
+      <a href="#samples">Samples</a>
+      <a href="#how">How it works</a>
+      <a href="#price">Price</a>
+      <a href="mailto:hello@litlocals.com">hello@</a>
+    </nav>
   </header>
+  <div class="nav-backdrop" id="nav-backdrop" hidden></div>
 
   <main id="main">
-    <section class="hero" id="top" aria-labelledby="hero-title">
-      <div class="wrap hero-inner">
-        <p class="eyebrow">Local service businesses</p>
-        <h1 id="hero-title">Your shop looks closed online.</h1>
-        <p class="lede">We replace a bad or missing website with a fast mobile site that shows the phone, the hours, the reviews, and their Google and Yelp listings when they have them. $2,500. $1,500 if you take the draft in 48 hours. Days, not months.</p>
-        <div class="hero-actions">
-          <a class="btn btn-gold" href="mailto:hello@litlocals.com">Email hello@litlocals.com</a>
-          <a class="btn btn-ghost" href="#offer">See what’s included</a>
+    <section class="poster" id="top" aria-labelledby="hero-title">
+      <figure class="hero-photo">
+        <img src="assets/hero.jpg" alt="" width="2000" height="1333">
+        <figcaption class="hero-caption">Job-site scene — not a client of ours.</figcaption>
+      </figure>
+      <div class="poster-copy">
+        <p class="poster-kicker">Lit Locals</p>
+        <h1 id="hero-title">Already have a site? That’s the job.</h1>
+        <p class="poster-lede">Upgrade or new. We send a draft of the next site. The preview is the sales call.</p>
+        <a class="btn btn-call" href="mailto:hello@litlocals.com">Email hello@litlocals.com</a>
+      </div>
+    </section>
+
+    <section class="intro reveal" id="intro">
+      <div class="intro-col">
+        <p class="eyebrow">Upgrade or new</p>
+        <h2>You already have a site. Or you don’t. Either way, we send a draft.</h2>
+      </div>
+      <div class="intro-col">
+        <p>Lit Locals is a local website-upgrade firm. If the current site is weak, we replace it. If there isn’t one, we build it. You get a draft to react to. That preview is the conversation — not a pitch deck.</p>
+      </div>
+    </section>
+
+    <section class="work reveal" id="work">
+      <div class="section-head">
+        <p class="eyebrow">Work</p>
+        <h2>We used Lit Locals on Lit Locals.</h2>
+      </div>
+      <p class="work-copy">The cream-and-gold page that was live is the before. This page is the after. Same offer. Same inbox. A site that looks like the work we send shops.</p>
+    </section>
+
+    <section class="compare reveal" id="before" aria-labelledby="before-title">
+      <h2 id="before-title">Before &amp; after</h2>
+      <div class="compare-grid">
+        <figure class="compare-card">
+          <div class="compare-frame">
+            <img src="samples/before-live.jpg" alt="The previous Lit Locals site — cream background, gold buttons, Source Serif headline." width="1440" height="1100">
+          </div>
+          <figcaption>
+            <span class="compare-tag">Before</span>
+            <span class="compare-name">litlocals.com — the live cream &amp; gold page</span>
+          </figcaption>
+        </figure>
+        <figure class="compare-card">
+          <div class="compare-frame">
+            <img src="samples/after-new.jpg" alt="This new Lit Locals site — slate poster, Playfair headline, forest call button." width="1440" height="1100">
+          </div>
+          <figcaption>
+            <span class="compare-tag is-after">After</span>
+            <span class="compare-name">This page — the Estately rebuild</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="samples reveal" id="samples" aria-labelledby="samples-title">
+      <div class="section-head samples-head">
+        <div>
+          <p class="eyebrow">Samples</p>
+          <h2 id="samples-title">A range of sites. Not one look.</h2>
         </div>
+        <p class="samples-note">Design references from Land-book — landing, other, portfolio, blog, plus restaurants, retail, hospitality, professional. Hosted here. Not a client list.</p>
+      </div>
+      <div class="carousel-wrap">
+        <button class="carousel-btn prev" type="button" aria-label="Previous samples">‹</button>
+        <div class="carousel" id="sample-carousel" tabindex="0">
+        <figure class="sample-card">
+          <div class="sample-frame">
+            <img src="samples/01-hifi-bar-cocktails.jpg" alt="HiFi bar & cocktails website design" width="720" height="960" loading="lazy">
+          </div>
+          <figcaption>
+            <span class="sample-cat">Hospitality · bar</span>
+            <span class="sample-name">HiFi bar & cocktails</span>
+          </figcaption>
+        </figure>
+        <figure class="sample-card">
+          <div class="sample-frame">
+            <img src="samples/02-surella-bar-bistrot.jpg" alt="Surella bar & bistrot website design" width="720" height="960" loading="lazy">
+          </div>
+          <figcaption>
+            <span class="sample-cat">Restaurant · bar</span>
+            <span class="sample-name">Surella bar & bistrot</span>
+          </figcaption>
+        </figure>
+        <figure class="sample-card">
+          <div class="sample-frame">
+            <img src="samples/03-combo-ostello-restaurant.jpg" alt="Combo ostello & restaurant website design" width="720" height="960" loading="lazy">
+          </div>
+          <figcaption>
+            <span class="sample-cat">Hospitality · restaurant</span>
+            <span class="sample-name">Combo ostello & restaurant</span>
+          </figcaption>
+        </figure>
+        <figure class="sample-card">
+          <div class="sample-frame">
+            <img src="samples/04-dash-burger.jpg" alt="Dash Burger website design" width="720" height="960" loading="lazy">
+          </div>
+          <figcaption>
+            <span class="sample-cat">Restaurant</span>
+            <span class="sample-name">Dash Burger</span>
+          </figcaption>
+        </figure>
+        <figure class="sample-card">
+          <div class="sample-frame">
+            <img src="samples/05-lobb-s-padel-club.jpg" alt="Lobb's Padel club website design" width="720" height="960" loading="lazy">
+          </div>
+          <figcaption>
+            <span class="sample-cat">Recreation · club</span>
+            <span class="sample-name">Lobb's Padel club</span>
+          </figcaption>
+        </figure>
+        <figure class="sample-card">
+          <div class="sample-frame">
+            <img src="samples/06-wwake-jewelry.jpg" alt="WWAKE jewelry website design" width="720" height="960" loading="lazy">
+          </div>
+          <figcaption>
+            <span class="sample-cat">Retail · jewelry</span>
+            <span class="sample-name">WWAKE jewelry</span>
+          </figcaption>
+        </figure>
+        <figure class="sample-card">
+          <div class="sample-frame">
+            <img src="samples/07-primal-pastures.jpg" alt="Primal Pastures website design" width="720" height="960" loading="lazy">
+          </div>
+          <figcaption>
+            <span class="sample-cat">Retail · food</span>
+            <span class="sample-name">Primal Pastures</span>
+          </figcaption>
+        </figure>
+        <figure class="sample-card">
+          <div class="sample-frame">
+            <img src="samples/08-lf-markey.jpg" alt="LF Markey website design" width="720" height="960" loading="lazy">
+          </div>
+          <figcaption>
+            <span class="sample-cat">Retail · apparel</span>
+            <span class="sample-name">LF Markey</span>
+          </figcaption>
+        </figure>
+        <figure class="sample-card">
+          <div class="sample-frame">
+            <img src="samples/09-eternal-blue.jpg" alt="Eternal Blue website design" width="720" height="960" loading="lazy">
+          </div>
+          <figcaption>
+            <span class="sample-cat">Retail · care</span>
+            <span class="sample-name">Eternal Blue</span>
+          </figcaption>
+        </figure>
+        <figure class="sample-card">
+          <div class="sample-frame">
+            <img src="samples/10-dix-hectares.jpg" alt="Dix Hectares website design" width="720" height="960" loading="lazy">
+          </div>
+          <figcaption>
+            <span class="sample-cat">Retail · skincare</span>
+            <span class="sample-name">Dix Hectares</span>
+          </figcaption>
+        </figure>
+        <figure class="sample-card">
+          <div class="sample-frame">
+            <img src="samples/11-provider-studio.jpg" alt="Provider Studio website design" width="720" height="960" loading="lazy">
+          </div>
+          <figcaption>
+            <span class="sample-cat">Hospitality · studio</span>
+            <span class="sample-name">Provider Studio</span>
+          </figcaption>
+        </figure>
+        <figure class="sample-card">
+          <div class="sample-frame">
+            <img src="samples/12-otherhalf-studio.jpg" alt="Otherhalf Studio website design" width="720" height="960" loading="lazy">
+          </div>
+          <figcaption>
+            <span class="sample-cat">Portfolio · studio</span>
+            <span class="sample-name">Otherhalf Studio</span>
+          </figcaption>
+        </figure>
+        <figure class="sample-card">
+          <div class="sample-frame">
+            <img src="samples/13-on-display-museum.jpg" alt="On Display museum website design" width="720" height="960" loading="lazy">
+          </div>
+          <figcaption>
+            <span class="sample-cat">Portfolio · culture</span>
+            <span class="sample-name">On Display museum</span>
+          </figcaption>
+        </figure>
+        <figure class="sample-card">
+          <div class="sample-frame">
+            <img src="samples/14-brikken-co.jpg" alt="Brikken+Co website design" width="720" height="960" loading="lazy">
+          </div>
+          <figcaption>
+            <span class="sample-cat">Portfolio · design</span>
+            <span class="sample-name">Brikken+Co</span>
+          </figcaption>
+        </figure>
+        <figure class="sample-card">
+          <div class="sample-frame">
+            <img src="samples/15-the-equator-company.jpg" alt="The Equator Company website design" width="720" height="960" loading="lazy">
+          </div>
+          <figcaption>
+            <span class="sample-cat">Portfolio · brand</span>
+            <span class="sample-name">The Equator Company</span>
+          </figcaption>
+        </figure>
+        <figure class="sample-card">
+          <div class="sample-frame">
+            <img src="samples/16-emergence-magazine.jpg" alt="Emergence Magazine website design" width="720" height="960" loading="lazy">
+          </div>
+          <figcaption>
+            <span class="sample-cat">Blog · magazine</span>
+            <span class="sample-name">Emergence Magazine</span>
+          </figcaption>
+        </figure>
+        <figure class="sample-card">
+          <div class="sample-frame">
+            <img src="samples/17-qp-magazine.jpg" alt="QP Magazine website design" width="720" height="960" loading="lazy">
+          </div>
+          <figcaption>
+            <span class="sample-cat">Blog · magazine</span>
+            <span class="sample-name">QP Magazine</span>
+          </figcaption>
+        </figure>
+        <figure class="sample-card">
+          <div class="sample-frame">
+            <img src="samples/18-alison-roman.jpg" alt="Alison Roman website design" width="720" height="960" loading="lazy">
+          </div>
+          <figcaption>
+            <span class="sample-cat">Blog · food</span>
+            <span class="sample-name">Alison Roman</span>
+          </figcaption>
+        </figure>
+        <figure class="sample-card">
+          <div class="sample-frame">
+            <img src="samples/19-ocula.jpg" alt="Ocula website design" width="720" height="960" loading="lazy">
+          </div>
+          <figcaption>
+            <span class="sample-cat">Blog · art</span>
+            <span class="sample-name">Ocula</span>
+          </figcaption>
+        </figure>
+        <figure class="sample-card">
+          <div class="sample-frame">
+            <img src="samples/20-nkora-coffee.jpg" alt="Nkora coffee website design" width="720" height="960" loading="lazy">
+          </div>
+          <figcaption>
+            <span class="sample-cat">Landing · coffee</span>
+            <span class="sample-name">Nkora coffee</span>
+          </figcaption>
+        </figure>
+        <figure class="sample-card">
+          <div class="sample-frame">
+            <img src="samples/21-aethos-hotels.jpg" alt="Aethos Hotels website design" width="720" height="960" loading="lazy">
+          </div>
+          <figcaption>
+            <span class="sample-cat">Landing · hotels</span>
+            <span class="sample-name">Aethos Hotels</span>
+          </figcaption>
+        </figure>
+        <figure class="sample-card">
+          <div class="sample-frame">
+            <img src="samples/22-diamond-rose.jpg" alt="Diamond Rose Sanctuary website design" width="720" height="960" loading="lazy">
+          </div>
+          <figcaption>
+            <span class="sample-cat">Landing · wellness</span>
+            <span class="sample-name">Diamond Rose Sanctuary</span>
+          </figcaption>
+        </figure>
+        <figure class="sample-card">
+          <div class="sample-frame">
+            <img src="samples/23-titan-wealth.jpg" alt="Titan wealth website design" width="720" height="960" loading="lazy">
+          </div>
+          <figcaption>
+            <span class="sample-cat">Landing · professional</span>
+            <span class="sample-name">Titan wealth</span>
+          </figcaption>
+        </figure>
+        <figure class="sample-card">
+          <div class="sample-frame">
+            <img src="samples/24-foundation-real-estate.jpg" alt="Foundation real estate website design" width="720" height="960" loading="lazy">
+          </div>
+          <figcaption>
+            <span class="sample-cat">Landing · real estate</span>
+            <span class="sample-name">Foundation real estate</span>
+          </figcaption>
+        </figure>
+        <figure class="sample-card">
+          <div class="sample-frame">
+            <img src="samples/25-hartmann-capital.jpg" alt="Hartmann Capital website design" width="720" height="960" loading="lazy">
+          </div>
+          <figcaption>
+            <span class="sample-cat">Landing · finance</span>
+            <span class="sample-name">Hartmann Capital</span>
+          </figcaption>
+        </figure>
+        <figure class="sample-card">
+          <div class="sample-frame">
+            <img src="samples/26-storey-architecture.jpg" alt="Storey Architecture website design" width="720" height="960" loading="lazy">
+          </div>
+          <figcaption>
+            <span class="sample-cat">Professional · architecture</span>
+            <span class="sample-name">Storey Architecture</span>
+          </figcaption>
+        </figure>
+        <figure class="sample-card">
+          <div class="sample-frame">
+            <img src="samples/27-amrit-palace.jpg" alt="Amrit Palace website design" width="720" height="960" loading="lazy">
+          </div>
+          <figcaption>
+            <span class="sample-cat">Hospitality · hotel</span>
+            <span class="sample-name">Amrit Palace</span>
+          </figcaption>
+        </figure>
+        <figure class="sample-card">
+          <div class="sample-frame">
+            <img src="samples/28-oka-furniture.jpg" alt="OKA furniture website design" width="720" height="960" loading="lazy">
+          </div>
+          <figcaption>
+            <span class="sample-cat">Retail · home</span>
+            <span class="sample-name">OKA furniture</span>
+          </figcaption>
+        </figure>        </div>
+        <button class="carousel-btn next" type="button" aria-label="Next samples">›</button>
       </div>
     </section>
 
-    <section class="section" id="offer" aria-labelledby="offer-title">
-      <div class="wrap">
-        <h2 id="offer-title">What’s included</h2>
-        <ul class="include-list">
-          <li>One page or a tight few pages</li>
-          <li>Works on a phone</li>
-          <li>Tap to call</li>
-          <li>Hours, service area, and reviews on the page</li>
-          <li>Google and Yelp listings on the page, if they have them</li>
-        </ul>
-        <p class="price-note">$2,500. $1,500 if you buy the draft within 48 hours.</p>
-      </div>
+    <section class="process reveal" id="how" aria-labelledby="how-title">
+      <h2 id="how-title">How it works</h2>
+      <ol class="steps">
+        <li class="is-hot">
+          <span class="step-n">01</span>
+          <div>
+            <h3>We look</h3>
+            <p>Your current site, or the lack of one. Google listing if you have it.</p>
+          </div>
+        </li>
+        <li>
+          <span class="step-n">02</span>
+          <div>
+            <h3>You get a draft</h3>
+            <p>A real page to react to. $1,500 if you buy it within 48 hours. The preview is the sales call.</p>
+          </div>
+        </li>
+        <li>
+          <span class="step-n">03</span>
+          <div>
+            <h3>It goes live</h3>
+            <p>When you say so. Or we send the zip. Remainder then.</p>
+          </div>
+        </li>
+      </ol>
     </section>
 
-    <section class="section section-alt" id="not-included" aria-labelledby="not-title">
-      <div class="wrap">
-        <h2 id="not-title">What’s not</h2>
-        <ul class="exclude-list">
-          <li>ChatGPT or Claude installs</li>
-          <li>Custom apps</li>
-          <li>Fake reviews</li>
-        </ul>
-      </div>
+    <section class="price reveal" id="price" aria-labelledby="price-title">
+      <p class="eyebrow">Price</p>
+      <h2 id="price-title">$2,500. $1,500 if you buy the draft within 48 hours.</h2>
+      <ul class="price-list">
+        <li>List is $2,500.</li>
+        <li>$1,500 if you buy the draft within 48 hours.</li>
+        <li>Deposit half — $750 on the $1,500. Remainder at go-live or zip.</li>
+        <li>72 hours after the $750 lands, you can cancel. We refund that $750. After 72 hours, the deposit is earned.</li>
+      </ul>
     </section>
 
-    <section class="section" id="how" aria-labelledby="how-title">
-      <div class="wrap">
-        <h2 id="how-title">How it works</h2>
-        <ol class="steps">
-          <li>
-            <span class="step-num" aria-hidden="true">1</span>
-            <p>We look at your Google listing and your current site (or the lack of one).</p>
-          </li>
-          <li>
-            <span class="step-num" aria-hidden="true">2</span>
-            <p>You get a draft to react to. $1,500 if you take it within 48 hours.</p>
-          </li>
-          <li>
-            <span class="step-num" aria-hidden="true">3</span>
-            <p>It goes live when you say so.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <section class="section section-alt" id="who" aria-labelledby="who-title">
-      <div class="wrap">
-        <h2 id="who-title">Who it’s for</h2>
-        <p class="who-copy">HVAC, plumbing, roofing, landscaping, cleaning, electrical, and similar local shops that make money but look weak or invisible online.</p>
-      </div>
-    </section>
-
-    <section class="section contact" id="contact" aria-labelledby="contact-title">
-      <div class="wrap">
-        <h2 id="contact-title">Contact</h2>
-        <p class="contact-copy"><a href="mailto:hello@litlocals.com">hello@litlocals.com</a></p>
-        <a class="btn btn-gold btn-lg" href="mailto:hello@litlocals.com">Email hello@litlocals.com</a>
-      </div>
+    <section class="close-band reveal" id="contact" aria-labelledby="close-title">
+      <h2 class="close-line" id="close-title">Send the current site. Or say you don’t have one.</h2>
+      <p class="close-copy">Questions and drafts go to one inbox.</p>
+      <a class="btn btn-call" href="mailto:hello@litlocals.com">hello@litlocals.com</a>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="wrap">
-      <p>Lit Locals · Los Angeles · <a href="mailto:hello@litlocals.com">hello@litlocals.com</a></p>
-      <p class="footer-note">We build the website. We are not a directory.</p>
-    </div>
+    <p>Lit Locals · local website upgrades · not a directory.</p>
+    <p><a href="mailto:hello@litlocals.com">hello@litlocals.com</a></p>
+    <p class="footer-note">Los Angeles. No dedicated help line — email only.</p>
   </footer>
+
+  <script src="site.js" defer></script>
 </body>
 </html>

@@ -1,9 +1,11 @@
-# Lit Locals product site (draft)
+# Lit Locals — litlocals.com
 
-This folder is a **draft product one-pager** for Lit Locals: affordable, fast AI-built website upgrades for local service businesses.
+Marketing site for Lit Locals. Static HTML/CSS/JS. Phone first. Estately feel (Playfair Display + Schibsted Grotesk, slate / off-white / mist / forest).
 
-- **Henry publishes.** Do not ship this yourself. Do not take payment, send email, or attach a domain.
-- **Do not attach this to the AISMB Vercel project** `lit-locals.vercel.app`.
-- Live `litlocals.com` and `/workspace/litlocals/site/` currently carry AISMB Agency copy. That is not this product. Do not copy those files here, and do not write back into `site/`.
+- Live: https://litlocals.com and https://lit-locals.vercel.app
+- Repo root of `litlocalsmain/litlocals-site`
+- Contact: hello@litlocals.com only
+- Do not flatten or rewrite `/workspace/litlocals/factory/` from here
+- Do not copy parked AISMB files from `/workspace/litlocals/site/`
 
-Files: `index.html`, `styles.css`, `assets/mark.png`, `assets/wordmark.png`. No deploy, no server.
+Offer (locked): $2,500 list. $1,500 if they buy the draft within 48 hours. Deposit $750. 72-hour cancel refunds that $750 only.
