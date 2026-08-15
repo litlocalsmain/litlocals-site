@@ -827,10 +827,7 @@ body {
   transition: opacity 0.7s ease, filter 0.7s ease, transform 0.7s ease;
 }
 
-.section-alt {
-  background: linear-gradient(180deg, rgba(239, 232, 217, 0.55), rgba(247, 243, 234, 0.2));
-  border-block: 0;
-}
+.section-alt { border-block: 0; }
 
 .facts {
   display: grid;
@@ -953,4 +950,22 @@ body {
 
 @media (max-width: 719px) {
   .facts div { grid-template-columns: 1fr; }
+}
+
+
+/* Section bands — cream vs warm gold wash. Light only. */
+:root {
+  --band: #f7f3ea;
+  --band-warm: #edd9a6;
+}
+.hero,
+.section {
+  background: var(--band);
+}
+.band-warm,
+.section-alt {
+  background: linear-gradient(180deg, #f2d78c 0%, #edd9a6 100%);
+}
+.band-warm .section {
+  background: transparent;
 }

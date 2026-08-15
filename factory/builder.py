@@ -327,7 +327,7 @@ def listings_block(prospect: dict) -> str:
         return ""
     inner = "\n".join(links)
     return (
-        '    <section class="section reveal" id="listings" aria-labelledby="listings-title">\n'
+        '    <section class="section band-warm reveal" id="listings" aria-labelledby="listings-title">\n'
         '      <div class="wrap">\n'
         '        <h2 id="listings-title">Find them</h2>\n'
         f'        <ul class="listings">\n{inner}\n        </ul>\n'
@@ -373,14 +373,14 @@ def service_details(pack: dict, prospect: dict) -> str:
         if not name or not (what or benefit):
             continue
         sid = slugify(name)
-        alt = " section-alt" if i % 2 == 0 else ""
+        alt = ""
         call = ""
         if tel:
             call = (
                 f'        <p class="tap-note"><a href="{tel}">Call {phone_l} about {escape(name)}</a></p>\n'
             )
         blocks.append(
-            f'    <section class="section{alt} reveal" id="svc-{escape(sid, quote=True)}" aria-labelledby="svc-{escape(sid, quote=True)}-title">\n'
+            f'    <section class="section reveal" id="svc-{escape(sid, quote=True)}" aria-labelledby="svc-{escape(sid, quote=True)}-title">\n'
             f'      <div class="wrap">\n'
             f'        <p class="eyebrow">Service</p>\n'
             f'        <h2 id="svc-{escape(sid, quote=True)}-title">{escape(name)}</h2>\n'
@@ -390,7 +390,9 @@ def service_details(pack: dict, prospect: dict) -> str:
             + "      </div>\n"
             "    </section>\n"
         )
-    return "\n".join(blocks)
+    if not blocks:
+        return ""
+    return '    <div class="band-warm">\n' + "\n".join(blocks) + "    </div>\n"
 
 
 def fill_city_phone(text: str, prospect: dict) -> str:
@@ -426,7 +428,7 @@ def process_block(pack: dict, prospect: dict) -> str:
     if not lis:
         return ""
     return (
-        '    <section class="section reveal" id="expect" aria-labelledby="expect-title">\n'
+        '    <section class="section band-warm reveal" id="expect" aria-labelledby="expect-title">\n'
         '      <div class="wrap">\n'
         '        <h2 id="expect-title">What happens when you call</h2>\n'
         f'        <ol class="steps">\n' + "\n".join(lis) + "\n        </ol>\n"
@@ -456,7 +458,7 @@ def faq_block(pack: dict, prospect: dict) -> str:
     if not items:
         return ""
     return (
-        '    <section class="section section-alt reveal" id="faq" aria-labelledby="faq-title">\n'
+        '    <section class="section reveal" id="faq" aria-labelledby="faq-title">\n'
         '      <div class="wrap">\n'
         '        <h2 id="faq-title">Before you call</h2>\n'
         f'        <div class="faq-list">\n' + "\n".join(items) + "\n        </div>\n"
