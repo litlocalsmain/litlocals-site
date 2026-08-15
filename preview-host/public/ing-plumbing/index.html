@@ -22,8 +22,9 @@
   <div class="preview-chrome">
   <div class="preview-bar" role="status">
     <div class="preview-bar-copy">
-      <strong>Draft for I.N.G. Plumbing Inc. Give it a test spin below.</strong>
-      <span>Tap Call. Scroll it. If it feels like your shop, lock it in for $1,500 — $750 now.</span>
+      <strong class="bar-full">Draft for I.N.G. Plumbing Inc. Give it a test spin below.</strong>
+      <span class="bar-full">Tap Call. Scroll it. If it feels like your shop, lock it in for $1,500 — $750 now.</span>
+      <strong class="bar-slim">Draft · $1,500 — $750 now</strong>
     </div>
     <a class="btn btn-bar" href="https://buy.stripe.com/test_14AcN53KA7Z2fBffxa14400">Buy now</a>
   </div>
@@ -34,16 +35,20 @@
         <img class="brand-mark" src="assets/mark.svg" alt="" width="72" height="48">
         <span class="brand-name">I.N.G. Plumbing Inc</span>
       </a>
-      <nav class="nav" aria-label="On this page">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+      </button>
+      <nav class="nav" id="site-nav" aria-label="On this page">
         <a href="#services">Services</a>
         <a href="#area">Area</a>
         <a href="#expect">What to expect</a>
         <a href="#faq">FAQ</a>
         <a href="#call">Call</a>
       </nav>
-      <a class="btn btn-gold header-cta" href="tel:+14242210086">Call (424) 221-0086</a>
+      <a class="btn btn-gold header-cta" href="tel:+14242210086"><span class="cta-long">Call (424) 221-0086</span><span class="cta-short">Call</span></a>
     </div>
   </header>
+  <div class="nav-backdrop" id="nav-backdrop" hidden></div>
   </div>
 
   <main id="main">
@@ -265,10 +270,22 @@
       return Array.prototype.slice.call(document.querySelectorAll('a[href*="buy.stripe.com"], a[href*="/api/buy"]'));
     }
 
+    function setBar(text) {
+      var slim = bar.querySelector(".bar-slim");
+      var fulls = bar.querySelectorAll(".bar-full");
+      if (slim) slim.textContent = text;
+      if (fulls.length) {
+        fulls[0].textContent = text;
+        for (var i = 1; i < fulls.length; i++) fulls[i].textContent = "";
+      } else {
+        bar.textContent = text;
+      }
+    }
+
     function apply(state) {
       if (!state) return;
       if (state.paid) {
-        bar.textContent = "Paid. We\u2019re finishing this.";
+        setBar("Paid. We’re finishing this.");
         buyLinks().forEach(function (a) {
           a.removeAttribute("href");
           a.setAttribute("aria-disabled", "true");
@@ -276,7 +293,7 @@
         return;
       }
       if (state.sent_at && state.tier === "list") {
-        bar.textContent = "The 48-hour price expired. This draft is $2,500.";
+        setBar("The 48-hour price expired. This draft is $2,500.");
         buyLinks().forEach(function (a) {
           a.textContent = a.textContent.replace("$1,500", "$2,500");
         });
@@ -284,13 +301,8 @@
     }
 
     var params = new URLSearchParams(window.location.search);
-    if (params.get("paid") === "1") apply({ paid: true });
-
-    fetch("/api/draft?t=" + encodeURIComponent(TOKEN))
-      .then(function (r) { return r.ok ? r.json() : null; })
-      .then(apply)
-      .catch(function () {});
+    fetch("/api/draft/" + TOKEN).then(function (r) { return r.ok ? r.json() : null; }).then(apply).catch(function () {});
   })();
-  </script>
+</script>
 </body>
 </html>
