@@ -364,8 +364,33 @@ def services_items(pack: dict) -> str:
 
 
 
+def intro_block(pack: dict, prospect: dict) -> str:
+    """Short about band. Pack eyebrow + filled lede only. No invented years or crew."""
+    eyebrow = str(pack.get("eyebrow") or pack.get("label") or "").strip()
+    lede = fill_words(pack.get("lede_template") or "", prospect).strip()
+    if not eyebrow and not lede:
+        return ""
+    heading = f"{eyebrow}, done in the open." if eyebrow else ""
+    left = []
+    if eyebrow:
+        left.append(f'        <p class="eyebrow">{escape(eyebrow)}</p>')
+    if heading:
+        left.append(f"        <h2>{escape(heading)}</h2>")
+    right = f"        <p>{escape(lede)}</p>" if lede else ""
+    return (
+        '    <section class="intro reveal" id="about">\n'
+        '      <div class="intro-col">\n'
+        + "\n".join(left)
+        + "\n      </div>\n"
+        '      <div class="intro-col">\n'
+        + (right + "\n" if right else "")
+        + "      </div>\n"
+        "    </section>\n"
+    )
+
+
 def jobs_block(pack: dict) -> str:
-    """First three services only. No icons. No svc-* links."""
+    """First three services only. No icons. No svc-* links. No photos."""
     items = []
     for svc in pack.get("services") or []:
         if not isinstance(svc, dict):
@@ -375,7 +400,7 @@ def jobs_block(pack: dict) -> str:
         if not name:
             continue
         items.append(
-            "        <li>\n"
+            '        <li class="job-card">\n'
             f"          <h3>{escape(name)}</h3>\n"
             f"          <p>{escape(what)}</p>\n"
             "        </li>"
@@ -387,8 +412,8 @@ def jobs_block(pack: dict) -> str:
     inner = "\n".join(items)
     return (
         '    <section class="jobs section reveal" id="jobs">\n'
-        "      <h2>The work</h2>\n"
-        f"      <ul>\n{inner}\n      </ul>\n"
+        "      <h2>What they handle</h2>\n"
+        f'      <ul class="job-cards">\n{inner}\n      </ul>\n'
         "    </section>\n"
     )
 
@@ -475,8 +500,9 @@ def process_block(pack: dict, prospect: dict) -> str:
         body = fill_city_phone(str(step.get("body") or ""), prospect)
         if not title:
             continue
+        hot = ' class="is-hot"' if not lis else ""
         lis.append(
-            "          <li>\n"
+            f"          <li{hot}>\n"
             f'            <span class="step-n">{i}</span>\n'
             f"            <div>\n"
             f"              <h3>{escape(title)}</h3>\n"
@@ -487,11 +513,9 @@ def process_block(pack: dict, prospect: dict) -> str:
     if not lis:
         return ""
     return (
-        '    <section class="section band-warm reveal" id="expect" aria-labelledby="expect-title">\n'
-        '      <div class="wrap">\n'
-        '        <h2 id="expect-title">What happens when you call</h2>\n'
-        f'        <ol class="steps">\n' + "\n".join(lis) + "\n        </ol>\n"
-        "      </div>\n"
+        '    <section class="process reveal" id="expect" aria-labelledby="expect-title">\n'
+        '      <h2 id="expect-title">What happens when you call</h2>\n'
+        f'      <ol class="steps">\n' + "\n".join(lis) + "\n      </ol>\n"
         "    </section>\n"
     )
 
@@ -541,6 +565,20 @@ def area_block(prospect: dict) -> str:
         f'        <p class="lede">Listed in {escape(area)}. If that sounds like your neighborhood, call and ask if they cover your street.</p>\n'
         + call
         + "      </div>\n"
+        "    </section>\n"
+    )
+
+
+def close_band(prospect: dict) -> str:
+    """Last dark band. Real shop phone only. No invented help line."""
+    phone = str(prospect.get("phone") or "").strip()
+    if not phone:
+        return ""
+    tel = escape(tel_href(phone), quote=True)
+    return (
+        '    <section class="close-band reveal" aria-label="Call the shop">\n'
+        '      <p class="close-line">Call them. The number rings the shop.</p>\n'
+        f'      <a class="btn btn-call" href="{tel}">Call {escape(phone)}</a>\n'
         "    </section>\n"
     )
 
@@ -663,11 +701,14 @@ def build(prospect_path: Path) -> Path:
         "buy_href": escape(buy_href, quote=True),
         "ask_href": escape(ask_href(prospect), quote=True),
         "hero_block": hero_block(hero),
+        "intro_block": intro_block(pack, prospect),
         "jobs_block": jobs_block(pack),
         "reviews_block": reviews_block(prospect),
+        "process_block": process_block(pack, prospect),
         "matchbook_block": matchbook_block(prospect),
         "faq_block": faq_block(pack, prospect),
         "listings_block": listings_block(prospect),
+        "close_band": close_band(prospect),
         "unsplash_credit": unsplash_credit(hero),
     }
 

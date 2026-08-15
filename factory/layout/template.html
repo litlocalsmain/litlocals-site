@@ -7,12 +7,12 @@
   <meta name="description" content="Draft site for {{name}} in {{city}}. Not live yet.">
   <meta name="robots" content="noindex, nofollow">
   <meta name="googlebot" content="noindex, nofollow">
-  <meta name="theme-color" content="#f3eee4">
+  <meta name="theme-color" content="#f4f2ee">
   <meta name="color-scheme" content="light">
   <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Schibsted+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -35,6 +35,7 @@
       </button>
       <nav class="nav" id="site-nav" aria-label="On this page">
         <a href="#jobs">Jobs</a>
+        <a href="#expect">Process</a>
         <a href="#hours">Hours</a>
         <a href="#faq">FAQ</a>
         <a href="#call">Call</a>
@@ -47,21 +48,30 @@
     <section class="poster" id="top" aria-labelledby="shop-name">
       {{hero_block}}
       <div class="poster-copy">
-        <h1 id="shop-name">{{name}}</h1>
-        <p class="poster-line">{{poster_line}}</p>
+        <p class="poster-kicker">{{name}}</p>
+        <h1 id="shop-name">{{poster_line}}</h1>
         <a class="btn btn-call" id="call" href="{{phone_tel}}">Call {{phone}}</a>
+        <div class="hero-bar">
+          <div class="hero-bar-cell">
+            <span class="hero-bar-label">City</span>
+            <span class="hero-bar-value">{{city}}</span>
+          </div>
+          <div class="hero-bar-cell">
+            <span class="hero-bar-label">Phone</span>
+            <a class="hero-bar-value" href="{{phone_tel}}">{{phone}}</a>
+          </div>
+        </div>
       </div>
     </section>
 
+    {{intro_block}}
     {{jobs_block}}
-
     {{reviews_block}}
-
+    {{process_block}}
     {{matchbook_block}}
-
     {{faq_block}}
-
     {{listings_block}}
+    {{close_band}}
 
   </main>
 

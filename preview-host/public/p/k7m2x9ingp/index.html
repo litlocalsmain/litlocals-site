@@ -7,12 +7,12 @@
   <meta name="description" content="Draft site for I.N.G. Plumbing Inc in Lawndale, CA. Not live yet.">
   <meta name="robots" content="noindex, nofollow">
   <meta name="googlebot" content="noindex, nofollow">
-  <meta name="theme-color" content="#f3eee4">
+  <meta name="theme-color" content="#f4f2ee">
   <meta name="color-scheme" content="light">
   <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Schibsted+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -35,6 +35,7 @@
       </button>
       <nav class="nav" id="site-nav" aria-label="On this page">
         <a href="#jobs">Jobs</a>
+        <a href="#expect">Process</a>
         <a href="#hours">Hours</a>
         <a href="#faq">FAQ</a>
         <a href="#call">Call</a>
@@ -51,24 +52,44 @@
       </figure>
 
       <div class="poster-copy">
-        <h1 id="shop-name">I.N.G. Plumbing Inc</h1>
-        <p class="poster-line">Burst pipe in Lawndale. We come.</p>
+        <p class="poster-kicker">I.N.G. Plumbing Inc</p>
+        <h1 id="shop-name">Burst pipe in Lawndale. We come.</h1>
         <a class="btn btn-call" id="call" href="tel:+14242210086">Call (424) 221-0086</a>
+        <div class="hero-bar">
+          <div class="hero-bar-cell">
+            <span class="hero-bar-label">City</span>
+            <span class="hero-bar-value">Lawndale, CA</span>
+          </div>
+          <div class="hero-bar-cell">
+            <span class="hero-bar-label">Phone</span>
+            <a class="hero-bar-value" href="tel:+14242210086">(424) 221-0086</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+        <section class="intro reveal" id="about">
+      <div class="intro-col">
+        <p class="eyebrow">Local plumbing</p>
+        <h2>Local plumbing, done in the open.</h2>
+      </div>
+      <div class="intro-col">
+        <p>Burst pipes, water heaters, and drain work in Lawndale, CA.</p>
       </div>
     </section>
 
         <section class="jobs section reveal" id="jobs">
-      <h2>The work</h2>
-      <ul>
-        <li>
+      <h2>What they handle</h2>
+      <ul class="job-cards">
+        <li class="job-card">
           <h3>Burst pipes and leaks</h3>
           <p>Water where it shouldn’t be — a split line, a dripping joint, or a leak you can hear in the wall.</p>
         </li>
-        <li>
+        <li class="job-card">
           <h3>Clogged drains</h3>
           <p>Sinks, tubs, and toilets that won’t go down, or a line that keeps backing up.</p>
         </li>
-        <li>
+        <li class="job-card">
           <h3>Water heaters</h3>
           <p>No hot water, lukewarm showers, or a tank that’s leaking or rumbling.</p>
         </li>
@@ -76,6 +97,32 @@
     </section>
 
     
+        <section class="process reveal" id="expect" aria-labelledby="expect-title">
+      <h2 id="expect-title">What happens when you call</h2>
+      <ol class="steps">
+          <li class="is-hot">
+            <span class="step-n">1</span>
+            <div>
+              <h3>You call the shop</h3>
+              <p>The number on this page rings them. Say what’s going on. A burst pipe and a dripping faucet are different jobs.</p>
+            </div>
+          </li>
+          <li>
+            <span class="step-n">2</span>
+            <div>
+              <h3>They tell you if they can take it</h3>
+              <p>Ask if they cover your street and when someone can come. If they can’t, you still have a real person on the line.</p>
+            </div>
+          </li>
+          <li>
+            <span class="step-n">3</span>
+            <div>
+              <h3>They look, then they talk</h3>
+              <p>A tech should explain what they found and the options before they start cutting or replacing anything.</p>
+            </div>
+          </li>
+      </ol>
+    </section>
 
         <section class="matchbook reveal" id="hours">
       <p class="shop-name">I.N.G. Plumbing Inc</p>
@@ -100,6 +147,10 @@
     </section>
 
     
+        <section class="close-band reveal" aria-label="Call the shop">
+      <p class="close-line">Call them. The number rings the shop.</p>
+      <a class="btn btn-call" href="tel:+14242210086">Call (424) 221-0086</a>
+    </section>
 
   </main>
 

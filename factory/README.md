@@ -1,4 +1,4 @@
-# Lit Locals preview factory (v1.3)
+# Lit Locals preview factory (v1.4)
 
 A small factory that turns a prospect JSON into a static preview site.
 
@@ -7,10 +7,12 @@ One layout engine. Six trade packs. Photo fallback. One Python builder.
 Magical but dumb. No CMS. No customer accounts. No email. No deploy.
 Company: Lit Locals only. Not AISMB Agency. Not a ChatGPT install.
 
-v1.3 poster: Fraunces + Schibsted Grotesk, ink (#1c1914) / cream (#f3eee4) / brass (#8b6914).
-Full-bleed shop poster, three jobs, restaurant matchbook, thin shop tag.
+v1.4 Estately-feel surface: Playfair Display (700) + Schibsted Grotesk (400/500/600).
+Slate #1e2226 / off-white #f4f2ee / mist #d5dbe0 / forest #2f4538.
+Full-bleed centered poster, three tall job cards, dark numbered process, thin shop tag.
 Still one engine / six packs. No gold wash, no shimmer, no pills, no icon cards.
 
+v1.3 poster (retired): Fraunces + Schibsted, ink / cream / brass hospitality poster.
 v1.2 surface (retired): rounded cards, glass header, warm gradients, gold button shimmer.
 v1.1 added scroll reveal and pack service copy. Reviews and hours still only render if the prospect JSON has them.
 
@@ -65,11 +67,11 @@ Frozen LA hunt cards were too thin for a second example (no review quotes, hours
 ## Layout
 
 layout/template.html plus layout/styles.css plus layout/motion.js
-Cream page #f3eee4, ink type #1c1914, brass #8b6914 on buttons and rules only.
-Display: Fraunces (opsz 9..144, 500/600). Grotesque: Schibsted Grotesk (400/500/600/700).
+Off-white page #f4f2ee, slate type #1e2226, forest #2f4538 on buttons and rules only.
+Display: Playfair Display 700. Grotesque: Schibsted Grotesk 400/500/600.
 Phone-first. Desktop keeps the same full-bleed poster — no two-column hero.
 
-Sections: poster, three jobs, reviews (if any), matchbook (hours only if present), three FAQs, listings (if URLs exist).
+Sections: poster, intro, three job cards, reviews (if any), process, matchbook (hours only if present), three FAQs, listings (if URLs exist), close band.
 Thin shop tag: "Draft · $1,500 — $750 now" + Buy. Hamburger on phone; horizontal nav from 720px.
 
 ## Packs
